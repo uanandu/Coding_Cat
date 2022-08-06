@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const Profile = () => {
+export const ErrorPage = () => {
     return (
         <>
-        Profile
+ErroPage
         </>
     );
-}
+    }
