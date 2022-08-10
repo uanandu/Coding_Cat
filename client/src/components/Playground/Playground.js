@@ -1,48 +1,22 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+
+// framer motion
+import {motion} from 'framer-motion';
 
 import { Editor } from "./Editor";
 import { Display } from "./Display";
 
 export const Playground = () => {
-  const [htmlCode, setHtmlCode] = useState("");
-  const [cssCode, setCssCode] = useState("");
-  const [jsCode, setJsCode] = useState("");
-  const [sourceCode, setSourceCode] = useState("");
+  
+    const { htmlCode, setHtmlCode, cssCode, setCssCode, jsCode, setJsCode, sourceCode, htmlPlaceHolder, cssPlaceHolder, jsPlaceHolder } = useContext(UserContext);
 
-  useEffect(() => {
-    const timeOut = setTimeout(() => {
-      setSourceCode(
-        `
-                    <html>
-                        <body>${htmlCode}</body>
-                        <style>${cssCode}</style>
-                        <script type="text/javascript">${jsCode}</script>
-                    </html>
-                `
-      );
-    }, 300);
-    return () => clearTimeout(timeOut);
-  }, [htmlCode, cssCode, jsCode]);
-
-  let htmlPlaceHolder = `
-    <html>
-      <body>
-        please enter the html code that goes here...
-      </body>
-    </html>
-  `;
-
-  let cssPlaceHolder = `
-    /* please enter the css code that goes here... */
-  `;
-
-  let jsPlaceHolder = `
-    /* please enter the js code that goes here... */
-  `;
+  console.log("the html code",htmlCode);
 
   return (
-    <Wrapper>
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+      <Wrapper>
       <TopContainer>
         <Editor
           title="HTML"
@@ -76,6 +50,8 @@ export const Playground = () => {
         <Display sourceCode={sourceCode} />
       </BottomContainer>
     </Wrapper>
+    </motion.div>
+    
   );
 };
 

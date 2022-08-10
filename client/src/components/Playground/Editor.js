@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 
-export const Editor = ({ displayName, placeHolder, onChange, language }) => {
+import CodeEditor from "@uiw/react-textarea-code-editor";
+
+export const Editor = ({
+  displayName,
+  placeHolder,
+  onChange,
+  language,
+  code,
+}) => {
   // state
   const [open, setOpen] = useState(true);
 
@@ -23,22 +31,36 @@ export const Editor = ({ displayName, placeHolder, onChange, language }) => {
   return (
     <>
       <Wrapper
-      // style={{
-      //   flexGrow: open ? "1" : "0",
-      // }}
+        style={{
+          flexGrow: open ? "1" : "0",
+        }}
       >
         <TitleArea>
           <Title>
             <TitleText>{displayName}</TitleText>
             <TitleIcon></TitleIcon>
           </Title>
-          <CollapseButton>Collapse 🤛🏽</CollapseButton>
+          <CollapseButton onClick={hancleClick}>
+            {open ? "Collapse 🤛🏽" : "Expand 🤌🏽"}
+          </CollapseButton>
         </TitleArea>
-        <InputTextArea
+        <CodeEditor
           onChange={(e) => {
             handleChange(e);
           }}
+          language={language}
           placeholder={placeHolder}
+          value={code}
+          padding={15}
+          style={{
+            width: "100%",
+            height: "100%",
+            boxSizing: "border-box",
+            fontSize: 14,
+            backgroundColor: "#fafafa",
+            fontFamily:
+              "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
+          }}
         />
       </Wrapper>
     </>
@@ -78,14 +100,9 @@ const TitleText = styled.h3``;
 
 const TitleIcon = styled.img``;
 
-const InputTextArea = styled.textarea`
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-`;
-
 const CollapseButton = styled.button`
   border-radius: 10px;
   width: 100px;
   font-weight: 700;
+  cursor: pointer;
 `;

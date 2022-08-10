@@ -5,39 +5,83 @@ import './App.css'; // from App.css for styling
 //NavBar component
 import { NavBar } from './components/NavBar';
 
+// react framer motion
+import {AnimatePresence} from 'framer-motion';
+
 // Component for pages
 import { WelcomePage } from './components/WelcomePage';
 import { Playground } from './components/Playground/Playground';
-import { Registration } from './components/Registration';
+import { Plans } from './components/Plans';
+import {Registration} from './components/Registration';
 import { ErrorPage } from './components/ErrorPage';
 import { GuestLanding } from './components/Guest/GuestLanding';
+import { MemberForm } from './components/Member/MemberForm';
 import { MemberLanding } from './components/Member/MemberLanding';
 import { Templates } from './components/Member/Templates';
 import { SingleTemplate } from './components/Member/SingleTemplate';
 import { Profile } from './components/Member/Profile';
-import { Test } from './components/Test';
+// import { Test } from './components/Test';
+import { Drafts } from './components/Member/Drafts';
+import { CodingClasses } from './components/Member/CodingClasses';
+import { EditProfile } from './components/Member/EditProfile';
+
+import {useAuth0, withAuthenticationRequired} from '@auth0/auth0-react';
+
+const ProtectedProfile = withAuthenticationRequired(Profile)
+const ProtectedTemplates = withAuthenticationRequired(Templates)
+const ProtectedSingleTemplate = withAuthenticationRequired(SingleTemplate)
+const ProtectedDrafts = withAuthenticationRequired(Drafts)
+const ProtectedCodingClasses = withAuthenticationRequired(CodingClasses)
+const ProtectedMemberLanding = withAuthenticationRequired(MemberLanding)
+const ProtectedMemberForm = withAuthenticationRequired(MemberForm)
+const ProtectedProfileEdit = withAuthenticationRequired(EditProfile)
 
 function App() {
+  const {isLoading, error} = useAuth0();
+
+  if (isLoading) {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>Loading...</h1>
+        </header>
+      </div>
+    );
+  } else if (error) {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>Error...</h1>
+        </header>
+      </div>
+    );
+  } else {
   return (
-   <>
-    <Router>
+    <>
       <NavBar />
+      <AnimatePresence>
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/playground" element={<Playground />} />
+        <Route path="/plans" element={<Plans />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/guest" element={<GuestLanding />} />
-        {/* <Route path="/templates-test" element={<Test />} /> */}
-        <Route path="/members/:memberId" element={<MemberLanding />} />
-        <Route path="/members/:memberId/profile" element={<Profile />} />
-        <Route path="/members/:memberId/templates" element={<Templates />} />
-        <Route path="/members/:memberId/templates/:templateId" element={<SingleTemplate />} />
-        <Route path="/members/:memberId/drafts" element={<ErrorPage />} />
+        <Route path="/member" element={<ProtectedMemberForm />} />
+        <Route path="/members/landing" element={<ProtectedMemberLanding />} />
+        <Route path="/members/profile" element={<ProtectedProfile />} />
+        <Route path="/members/profile/profile-edit" element={<ProtectedProfileEdit />} />
+        <Route path="/members/templates" element={<ProtectedTemplates />} />
+        <Route path="/members/templates/:templateType" element={<ProtectedSingleTemplate />} />
+        <Route path="/members/drafts" element={<ProtectedDrafts />} />
+        <Route path="/members/coding-classes" element={<ProtectedCodingClasses />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </Router>
-   </>
+      </AnimatePresence>
+    </>
   );
+  }
+
+  
 }
 
 export default App;
