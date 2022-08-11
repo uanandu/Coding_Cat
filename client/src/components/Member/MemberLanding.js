@@ -55,10 +55,10 @@ export const MemberLanding = () => {
     },
     {
       id: 6,
-      type: "Coding challenges",
-      description: "Challenge yourself",
+      type: "Resources",
+      description: "Go-to resources",
       image: "https://i.imgur.com/q5XxQZb.png",
-      link: `/members/coding-challenges`,
+      link: `/members/resources`,
     }
   ];
 

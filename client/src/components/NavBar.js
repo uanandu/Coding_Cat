@@ -13,6 +13,8 @@ export const NavBar = () => {
     isAuthenticated
   } = useAuth0();
 
+  const { userInfo } = useContext(UserContext);
+
   return (
     <Wrapper>
       <Logo to="/">

@@ -22,18 +22,24 @@ import { SingleTemplate } from './components/Member/SingleTemplate';
 import { Profile } from './components/Member/Profile';
 // import { Test } from './components/Test';
 import { Drafts } from './components/Member/Drafts';
+import { SingleDraft } from './components/Member/SingleDraft';
 import { CodingClasses } from './components/Member/CodingClasses';
+import { Resources } from './components/Member/Resources';
 import { EditProfile } from './components/Member/EditProfile';
-
+import { MemberPlayground } from './components/Member/MemberPlaygrond';
 import {useAuth0, withAuthenticationRequired} from '@auth0/auth0-react';
 
+// protected routes
 const ProtectedProfile = withAuthenticationRequired(Profile)
 const ProtectedTemplates = withAuthenticationRequired(Templates)
 const ProtectedSingleTemplate = withAuthenticationRequired(SingleTemplate)
 const ProtectedDrafts = withAuthenticationRequired(Drafts)
+const ProtectedSingleDraft = withAuthenticationRequired(SingleDraft)
 const ProtectedCodingClasses = withAuthenticationRequired(CodingClasses)
+const ProtectedResource = withAuthenticationRequired(Resources)
 const ProtectedMemberLanding = withAuthenticationRequired(MemberLanding)
 const ProtectedMemberForm = withAuthenticationRequired(MemberForm)
+const ProtectedMemberPlayground = withAuthenticationRequired(MemberPlayground)
 const ProtectedProfileEdit = withAuthenticationRequired(EditProfile)
 
 function App() {
@@ -68,12 +74,15 @@ function App() {
         <Route path="/guest" element={<GuestLanding />} />
         <Route path="/member" element={<ProtectedMemberForm />} />
         <Route path="/members/landing" element={<ProtectedMemberLanding />} />
+        <Route path="/members/playground" element={<ProtectedMemberPlayground />} />
         <Route path="/members/profile" element={<ProtectedProfile />} />
         <Route path="/members/profile/profile-edit" element={<ProtectedProfileEdit />} />
         <Route path="/members/templates" element={<ProtectedTemplates />} />
         <Route path="/members/templates/:templateType" element={<ProtectedSingleTemplate />} />
         <Route path="/members/drafts" element={<ProtectedDrafts />} />
+        <Route path="/members/drafts/:draftId" element={<ProtectedSingleDraft />} />
         <Route path="/members/coding-classes" element={<ProtectedCodingClasses />} />
+        <Route path="/members/resources" element={<ProtectedResource />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       </AnimatePresence>

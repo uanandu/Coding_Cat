@@ -46,7 +46,6 @@ export const MemberForm = () => {
               onChange={handleChange}
             />
           </MemberAgeDiv>
-          <MemberAvatarDiv>{/* <MemberAvatar /> */}avatar here</MemberAvatarDiv>
           <MemberOccupationDiv>
             <MemberOccupation
               type="text"
@@ -101,7 +100,7 @@ const FormContainer = styled.div`
   justify-content: space-evenly;
   box-shadow: 2px 2px 5px 0px rgba(255, 255, 255, 1);
   height: 60%;
-  width: 40vw;
+  width: 60vw;
   margin-right: 20px;
   animation: glowing 1.5s infinite;
 
@@ -123,7 +122,7 @@ const MemberProfileForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 100%;
+  width: 50vw;
   margin: 0 auto;
 `;
 const MemberProfileFormTitle = styled.h1`
@@ -141,8 +140,7 @@ const MemberUsernameDiv = styled.div`
   margin: 10px 0 10px 0;
 `;
 const MemberUserName = styled.input`
-  width: 100%;
-  max-width: 300px;
+  width: 40vw;
   margin-bottom: 10px;
   padding: 15px;
   border: none;
@@ -166,8 +164,7 @@ const MemberFullNameDiv = styled.div`
   margin: 10px 0 10px 0;
 `;
 const MemberFullName = styled.input`
-  width: 100%;
-  max-width: 300px;
+  width: 40vw;
   margin-bottom: 10px;
   padding: 15px;
   border: none;
@@ -191,8 +188,7 @@ const MemberEmailDiv = styled.div`
   margin: 10px 0 10px 0;
 `;
 const MemberEmail = styled.input`
-  width: 100%;
-  max-width: 300px;
+  width: 40vw;
   margin-bottom: 10px;
   padding: 15px;
   border: none;
@@ -216,8 +212,7 @@ const MemberAgeDiv = styled.div`
   margin: 10px 0 10px 0;
 `;
 const MemberAge = styled.input`
-  width: 100%;
-  max-width: 300px;
+  width: 40vw;
   margin-bottom: 10px;
   padding: 15px;
   border: none;
@@ -239,15 +234,35 @@ const MemberAge = styled.input`
 
 const MemberAvatarDiv = styled.div`
   margin: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
-const MemberAvatar = styled.img``;
+const MemberInstruction = styled.p``;
+const AvatarImagesDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+const MemberAvatar = styled.input`
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
+  transition: 1s ease-in-out;
+  &:hover {
+    transform: scale(2);
+  }
+
+  &:active {
+    box-shadow: 2px 2px 5px 0px yellow;
+  }
+`;
 
 const MemberOccupationDiv = styled.div`
   margin: 10px 0 10px 0;
 `;
 const MemberOccupation = styled.input`
-  width: 100%;
-  max-width: 300px;
+  width: 40vw;
   margin-bottom: 10px;
   padding: 15px;
   border: none;
@@ -271,8 +286,7 @@ const MemberBioDiv = styled.div`
   margin: 10px 0 10px 0;
 `;
 const MemberBio = styled.input`
-  width: 100%;
-  max-width: 300px;
+  width: 40vw;
   margin-bottom: 10px;
   padding: 15px;
   border: none;

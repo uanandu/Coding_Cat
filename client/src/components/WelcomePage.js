@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { CodeDisplay } from "./CodeDisplay";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const WelcomePage = () => {
   const { user } = useAuth0();
@@ -36,9 +36,9 @@ export const WelcomePage = () => {
             <MessageList>
               <MessageItem>repeat.</MessageItem>
               <MessageItem>Develop.</MessageItem>
-              <MessageItem>design</MessageItem>
+              <MessageItem>design.</MessageItem>
               <MessageItem>learn.</MessageItem>
-              <MessageItem>Imagine</MessageItem>
+              <MessageItem>Imagine.</MessageItem>
             </MessageList>
           </MessageHeader>
         </MessageDiv>
@@ -89,7 +89,10 @@ const LeftDiv = styled.div`
 const ImageDiv = styled.div``;
 const Image = styled.img``;
 
-const MessageDiv = styled.div``;
+const MessageDiv = styled.div`
+  position: relative;
+  left: 5vw;
+`;
 const MessageHeader = styled.header`
   margin: 7rem auto;
   overflow: hidden;

@@ -42,7 +42,7 @@ export const Profile = () => {
           Or You can access the code playground down here!
         </MemberText>
         <MemberOptionsDiv>
-        <CodePlayground to="/playground">Code Playground</CodePlayground>
+        <CodePlayground to="/members/playground">Code Playground</CodePlayground>
         <EditProfile to="/members/profile/profile-edit">Edit Profile</EditProfile>
         </MemberOptionsDiv>
       </InstructionsSection>

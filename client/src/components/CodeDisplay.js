@@ -37,11 +37,12 @@ export const CodeDisplay = () => {
               <pre>
                 <code className="language-html">
                   {`
+<head>
 </head>
 <body>
     <h1>Hello World</h1>
 </body>
-</html>`}
+`}
                 </code>
               </pre>
             </CodeContent>

@@ -2,6 +2,8 @@ import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import he from "he";
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -118,6 +120,66 @@ export const UserProvider = ({ children }) => {
     /* please enter the js code that goes here... */
   `;
 
+  // console.log("the user here", userInfo);
+
+  let convertedCode = he.encode(sourceCode);
+
+
+  // console.log("the user source code", sourceCode);
+
+  // console.log("the user converted code", convertedCode);
+
+
+  const handleDraftSave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // posting the draft to the database
+    axios
+      .post(`/api/members/drafts`, {
+        email: userInfo.email,
+        html: he.encode(htmlCode),
+        css: he.encode(cssCode),  
+        js: he.encode(jsCode),
+        user: userInfo.username,
+      })
+      .then((res) => {
+        navigate("/members/drafts");
+        console.log("the response from the draft", res);
+        if (res.status === 201) {
+          setHtmlCode("");
+          setCssCode("");
+          setJsCode("");
+          setSourceCode("");
+          navigate("/members/drafts");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  }
+
+  const deleteDraft = (e, draftId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // deleting the draft from the database
+
+    console.log(e)
+    axios
+      .delete(`/api/members/drafts/${draftId}`)
+      .then((res) => {
+        console.log("the response from the draft", res);
+        if (res.status === 200) {
+          window.location.reload();
+          navigate("/members/drafts");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
   return (
     <UserContext.Provider
       value={{
@@ -140,6 +202,8 @@ export const UserProvider = ({ children }) => {
         templates,
         setTemplates,
         isPassMatch,
+        handleDraftSave,
+        deleteDraft,
       }}
     >
       {children}

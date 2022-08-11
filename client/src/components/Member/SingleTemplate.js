@@ -79,7 +79,7 @@ const Wrapper = styled.div`
   flex-grow: 1;
   flex-basis: 0;
   width: 100%;
-  max-height: 100vh;
+  height: 100vh;
 `;
 
 const TopContainer = styled.div`

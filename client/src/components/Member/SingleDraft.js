@@ -1,14 +1,20 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import he from "he";
+
 import { UserContext } from "../../context/UserContext";
 
-// framer motion
-import { motion } from "framer-motion";
+import { Editor } from "../Playground/Editor";
+import { Display } from "../Playground/Display";
 
-import { Editor } from "./Editor";
-import { Display } from "./Display";
+export const SingleDraft = () => {
+  const { draftId } = useParams();
+  const {memberId} = useParams();
 
-export const Playground = () => {
+    const [creditToUser, setCreditToUser] = useState(null);
+
   const {
     htmlCode,
     setHtmlCode,
@@ -17,54 +23,60 @@ export const Playground = () => {
     jsCode,
     setJsCode,
     sourceCode,
-    htmlPlaceHolder,
-    cssPlaceHolder,
-    jsPlaceHolder,
   } = useContext(UserContext);
 
-  console.log("the html code", htmlCode);
+  useEffect(() => {
+    axios
+      .get(`/api/members/drafts/${draftId}`)
+      .then((res) => {
+        console.log("the response from the draft", res);
+        setHtmlCode(he.decode(res.data.data.html));
+        setCssCode(he.decode(res.data.data.css));
+        setJsCode(he.decode(res.data.data.js));
+        setCreditToUser(res.data.data.user);
+      })
+      .catch((err) => console.log(err));
+  }, [memberId, draftId]);
+
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <>
       <Wrapper>
         <TopContainer>
           <Editor
             title="HTML"
             code={htmlCode}
-            setCode={setHtmlCode}
             displayName="HTML"
             language="html"
-            placeHolder={htmlPlaceHolder}
             onChange={setHtmlCode}
           />
           <Editor
             title="CSS"
             code={cssCode}
-            setCode={setCssCode}
             displayName="CSS"
             language="css"
-            placeHolder={cssPlaceHolder}
             onChange={setCssCode}
           />
           <Editor
             title="JS"
             code={jsCode}
-            setCode={setJsCode}
             displayName="JS"
             language="javascript"
-            placeHolder={jsPlaceHolder}
             onChange={setJsCode}
           />
         </TopContainer>
         <BottomContainer>
           <Display sourceCode={sourceCode} />
+          {
+            creditToUser &&
+            <CreditToUser>
+                <h4>Credit to:</h4>
+                <h3 style={{fontStyle:"italic"}}>{creditToUser}</h3>
+            </CreditToUser>
+          }
         </BottomContainer>
       </Wrapper>
-    </motion.div>
+    </>
   );
 };
 
@@ -92,3 +104,13 @@ const BottomContainer = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+const CreditToUser = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    height: auto;
+    color: white;
+`
