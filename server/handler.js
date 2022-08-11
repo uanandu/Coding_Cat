@@ -307,11 +307,11 @@ const deleteDraft = async (req, res) => {
   const db = client.db("coding_cat");
   await client.connect();
     try {
-      const draft = await db.collection("drafts").findOneAndDelete({ _id: draftId });
+      const deleteIt = await db.collection("drafts").findOneAndDelete({ _id: draftId });
 
       res.status(200).json({
         status: 200,
-        data: draft,
+        data: deleteIt,
         message: "Draft deleted!",
       });
     } catch (err) {
