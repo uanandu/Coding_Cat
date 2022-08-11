@@ -225,11 +225,6 @@ const createDraft = async (req, res) => {
   // assign random number to draft
   const randomNumber = Math.floor(Math.random() * 20);
 
-  const memberCheck = await members.findOne({ email: req.body.email });
-
-  console.log("memberCheck", memberCheck);
-
-  if (memberCheck) {
     try {
       const newDraft = await db.collection("drafts").insertOne({
         _id: randomNumber,
@@ -248,9 +243,6 @@ const createDraft = async (req, res) => {
     } catch (err) {
       res.status(500).json({ status: 500, message: "Template query failed!" });
     }
-  } else {
-    res.status(404).json({ status: 404, message: "member not found!!" });
-  }
 
   client.close();
 };
