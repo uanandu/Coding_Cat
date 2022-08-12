@@ -15,6 +15,7 @@ export const UserProvider = ({ children }) => {
 
   // templates fetched here
   const [templates, setTemplates] = useState([]);
+  const [avatarImage, setAvatarImage] = useState("");
 
   // for registration/login
   const [userHere, setUserHere] = useState({
@@ -24,6 +25,7 @@ export const UserProvider = ({ children }) => {
     age: "",
     occupation: "",
     memberbio: "",
+    avatar: "",
   });
 
   const [userInfo, setUserInfo] = useState({});
@@ -53,22 +55,21 @@ export const UserProvider = ({ children }) => {
 
   const handleuserRegistration = (e) => {
     e.preventDefault();
-    setUserHere({
-      ...userHere,
-      username: e.target.username.value,
-      fullname: e.target.fullname.value,
-      email: e.target.email.value,
-      age: e.target.age.value,
-      occupation: e.target.occupation.value,
-      memberbio: e.target.memberbio.value,
-      agreed: e.target.agreed.checked,
-    });
 
     // posting the user to the database
     axios
-      .post("/api/member", userHere)
+      .post("/api/member", {
+        username: e.target.username.value,
+        fullname: e.target.fullname.value,
+        email: e.target.email.value,
+        age: e.target.age.value,
+        occupation: e.target.occupation.value,
+        memberbio: e.target.memberbio.value,
+        avatar: avatarImage,
+        agreed: e.target.agreed.checked,
+      })
       .then((res) => {
-        console.log("the response from the registration", res);
+        // console.log("the response from the registration", res);
         if (res.status === 201) {
           setUserHere({
             username: "",
@@ -124,6 +125,7 @@ export const UserProvider = ({ children }) => {
 
   let convertedCode = he.encode(sourceCode);
 
+  // console.log("avatar image here", avatarImage);
 
   // console.log("the user source code", sourceCode);
 
@@ -204,6 +206,7 @@ export const UserProvider = ({ children }) => {
         isPassMatch,
         handleDraftSave,
         deleteDraft,
+        setAvatarImage,
       }}
     >
       {children}

@@ -74,7 +74,6 @@ export const SingleTemplate = () => {
 const Wrapper = styled.div`
   background-color: black;
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   flex-grow: 1;
   flex-basis: 0;
@@ -84,13 +83,20 @@ const Wrapper = styled.div`
 
 const TopContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  width: 100%;
+  width: 50%;
   height: 100%;
+  left: 0;
   border-bottom: 1px solid black;
+  position: absolute;
 `;
 const BottomContainer = styled.div`
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 100vh;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+
 `;

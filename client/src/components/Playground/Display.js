@@ -13,7 +13,7 @@ export const Display = ({sourceCode}) => {
 
 // styled components
 const DisplayWrapper = styled.div`
-    height:42vh;
+    height:100vh;
     width: 100%;
   background-color: azure;
   margin: 10px;
@@ -21,6 +21,7 @@ const DisplayWrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  object-fit: contain;
 `;
 
 

@@ -89,7 +89,7 @@ const userRegistration = async (req, res) => {
     age: parseInt(req.body.age),
     occupation: req.body.occupation,
     memberbio: req.body.memberbio,
-    avatar: req.body.avatar,
+    avatar: req.body.avatar ? req.body.avatar : "https://cdn.discordapp.com/attachments/978673047772991548/1005480365399474216/Coding_Cat-logos_transparent.png",
   };
 
   console.log("user", user);
@@ -298,7 +298,7 @@ const getDraftById = async (req, res) => {
 
 // DELETE - /api/drafts/:draftId
 const deleteDraft = async (req, res) => {
-  const draftId = req.params.draftId;
+  const draftId = parseInt(req.params.draftId);
 
   console.log("draftId in delete", draftId);
 
@@ -308,6 +308,8 @@ const deleteDraft = async (req, res) => {
   await client.connect();
     try {
       const deleteIt = await db.collection("drafts").findOneAndDelete({ _id: draftId });
+
+      console.log("deleteIt", deleteIt);
 
       res.status(200).json({
         status: 200,

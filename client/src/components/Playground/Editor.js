@@ -60,6 +60,8 @@ export const Editor = ({
             backgroundColor: "#fafafa",
             fontFamily:
               "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
+            overflowX: "hidden",
+            overflowY: "auto",
           }}
         />
       </Wrapper>
@@ -76,6 +78,8 @@ const Wrapper = styled.div`
   margin: 10px;
   border-radius: 10px;
   box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
 
 const TitleArea = styled.div`

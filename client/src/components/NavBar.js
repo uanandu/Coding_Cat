@@ -21,25 +21,19 @@ export const NavBar = () => {
         <LogoImage src={catimage} />
       </Logo>
       {
-        isAuthenticated ? (
+        isAuthenticated && (
           <>
             <UserAccount to={`/members/landing`}>
               <NavButton>MEMBER AREA</NavButton>
             </UserAccount>
           </>
-        ) : (
-          <></>
-        )
-      }
+        )}
 
-      {isAuthenticated ? (
+      {isAuthenticated && (
         <>
           <UserAccount to={`/members/profile`}>
-            <UserAvatar src={catimage} />
+            <UserAvatar src={userInfo.avatar} />
           </UserAccount>
-        </>
-      ) : (
-        <>
         </>
       )}
     </Wrapper>
@@ -78,9 +72,10 @@ const UserAccount = styled(NavLink)`
   font-weight: 800;
 `;
 const UserAvatar = styled.img`
-  width: 7vh;
+  width: 4vh;
   height: auto;
   object-fit: contain;
+  margin-top: 10px;
 `;
 
 const LoginButton = styled(NavLink)`

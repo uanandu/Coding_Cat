@@ -1,10 +1,16 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { UserContext } from "../../context/UserContext";
 
 export const MemberForm = () => {
-  const { handleChange, handleuserRegistration } = useContext(UserContext);
+  const { handleChange, handleuserRegistration, setAvatarImage } = useContext(UserContext);
+
+
+  const handleChoose = (e, avatarsrc) => {
+    e.preventDefault();
+    setAvatarImage(avatarsrc);
+  };
 
   return (
     <Wrapper>
@@ -29,6 +35,25 @@ export const MemberForm = () => {
               onChange={handleChange}
             />
           </MemberFullNameDiv>
+          <MemberAvatarDiv>
+          <AvatarImagesDiv>
+            <button type="button" onClick={(e)=> handleChoose(e, "https://cdn.discordapp.com/attachments/978673047772991548/1007022669931233331/peep-51.png")}>
+            <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022669931233331/peep-51.png" />
+            </button>
+            <button type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022591527100466/peep-37.png")}>
+            <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022591527100466/peep-37.png" />
+            </button>
+            <button type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022590876991539/peep-39.png")}>
+            <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022590876991539/peep-39.png" />
+            </button>
+            <button type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022590558220338/peep-32.png")}>
+            <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022590558220338/peep-32.png" />
+            </button>
+            <button type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022589882925136/peep-19.png")}>
+            <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022589882925136/peep-19.png" />
+            </button>
+          </AvatarImagesDiv>
+          </MemberAvatarDiv>
           <MemberEmailDiv>
             <MemberEmail
               type="email"
@@ -139,6 +164,7 @@ const MemberProfileFormTitle = styled.h1`
 const MemberUsernameDiv = styled.div`
   margin: 10px 0 10px 0;
 `;
+
 const MemberUserName = styled.input`
   width: 40vw;
   margin-bottom: 10px;
@@ -238,13 +264,15 @@ const MemberAvatarDiv = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
 `;
-const MemberInstruction = styled.p``;
+const AvataButton = styled.button`
+
+`
 const AvatarImagesDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 `;
-const MemberAvatar = styled.input`
+const MemberAvatar = styled.img`
   width: 40px;
   height: auto;
   border-radius: 50%;

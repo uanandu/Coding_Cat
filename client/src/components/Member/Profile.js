@@ -24,7 +24,7 @@ export const Profile = () => {
       <h2>Hi there! </h2>
       <h2>This is your profile {userInfo.username}</h2>
       <MemberAvatar>
-        <MemberImage src="https://joeschmoe.io/api/v1/random" />
+        <MemberImage src={userInfo.avatar} />
       </MemberAvatar>
       <MemberInstructions>
         <MemberText>
