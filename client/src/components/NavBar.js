@@ -1,33 +1,32 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useContext } from "react"; // from react
+import { NavLink } from "react-router-dom"; // from react-router-dom
 
-import { UserContext } from "../context/UserContext";
+import styled from "styled-components"; // from styled-components
 
-import catimage from "../assets/Coding Cat-logos_transparent.png";
+import { useAuth0 } from "@auth0/auth0-react"; // from auth0
 
+import { UserContext } from "../context/UserContext"; // from context
+
+import catimage from "../assets/Coding Cat-logos_transparent.png"; // for default logo
+
+// NavBar component for the user
 export const NavBar = () => {
+  const { isAuthenticated } = useAuth0(); // get user info from auth0
 
-  const {
-    isAuthenticated
-  } = useAuth0();
-
-  const { userInfo } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext); // get user info from context
 
   return (
     <Wrapper>
       <Logo to="/">
         <LogoImage src={catimage} />
       </Logo>
-      {
-        isAuthenticated && (
-          <>
-            <UserAccount to={`/members/landing`}>
-              <NavButton>MEMBER AREA</NavButton>
-            </UserAccount>
-          </>
-        )}
+      {isAuthenticated && (
+        <>
+          <UserAccount to={`/members/landing`}>
+            <NavButton>MEMBER AREA</NavButton>
+          </UserAccount>
+        </>
+      )}
 
       {isAuthenticated && (
         <>
@@ -43,12 +42,16 @@ export const NavBar = () => {
 //styled-components
 
 const Wrapper = styled.div`
-  background-color: #f5f5f5;
+  position: fixed;
+  background-color: white;
   height: 5vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem 0 2rem;
+  z-index: 30;
+  border-bottom: 1.5px solid black;
 `;
 
 const Logo = styled(NavLink)`
@@ -72,27 +75,29 @@ const UserAccount = styled(NavLink)`
   font-weight: 800;
 `;
 const UserAvatar = styled.img`
+  position: relative;
   width: 4vh;
   height: auto;
   object-fit: contain;
   margin-top: 10px;
+  margin-right: 3.5vw;
 `;
 
 const LoginButton = styled(NavLink)`
-    text-decoration: none;
-    color: #000;
-    font-size: 1.5rem;
-    border: 1px solid #000;
-    padding: 10px;
-`
+  text-decoration: none;
+  color: #000;
+  font-size: 1.5rem;
+  border: 1px solid #000;
+  padding: 10px;
+`;
 const NavButton = styled.button`
-    background-color: black;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: bold;
-    color: white;
-    margin: 10px;
-    transition: 1s ease-in-out;
-    cursor: pointer;
-`
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  margin: 10px;
+  transition: 1s ease-in-out;
+  cursor: pointer;
+`;

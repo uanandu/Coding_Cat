@@ -1,14 +1,19 @@
-import styled from "styled-components";
-import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { useContext } from "react"; // from react
 
 // framer motion
 import { motion } from "framer-motion";
 
-import { Editor } from "./Editor";
-import { Display } from "./Display";
+import styled from "styled-components"; // from styled-components
 
+import { UserContext } from "../../context/UserContext"; // from context
+
+import { Editor } from "./Editor"; // for code editor
+import { Display } from "./Display"; // for webpage display
+
+// Playground for the guestuser
 export const Playground = () => {
+
+  // get user info from context
   const {
     htmlCode,
     setHtmlCode,
@@ -21,8 +26,6 @@ export const Playground = () => {
     cssPlaceHolder,
     jsPlaceHolder,
   } = useContext(UserContext);
-
-  console.log("the html code", htmlCode);
 
   return (
     <motion.div
@@ -77,6 +80,7 @@ const Wrapper = styled.div`
   flex-basis: 0;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 `;
 
 const TopContainer = styled.div`

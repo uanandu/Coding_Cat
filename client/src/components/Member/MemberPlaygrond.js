@@ -1,13 +1,20 @@
+import { useContext } from "react"; // from react
+import axios from "axios"; // from axios
+
 // framer motion
-import { motion } from "framer-motion";
-import styled from "styled-components";
-import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";import { Editor } from "../Playground/Editor";
-import { Display } from "../Playground/Display";
+import { motion } from "framer-motion"; 
 
-import axios from "axios";
+import styled from "styled-components"; // from styled-components
 
+import { UserContext } from "../../context/UserContext"; // from context
+
+import { Editor } from "../Playground/Editor"; // for editing/displaying the code
+import { Display } from "../Playground/Display"; // for displaying the website
+
+// Playground specifically for the member/user
 export const MemberPlayground = () => {
+
+  // context needed for the user
   const {
     htmlCode,
     setHtmlCode,
@@ -21,8 +28,6 @@ export const MemberPlayground = () => {
     jsPlaceHolder,
     handleDraftSave
   } = useContext(UserContext);
-
-  console.log("the html code", htmlCode);
 
   return (
     <motion.div
@@ -107,7 +112,6 @@ const SaveButtonDiv = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 `
 
 const SaveButton = styled.button`

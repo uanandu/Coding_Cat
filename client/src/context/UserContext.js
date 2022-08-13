@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { createContext, useState, useEffect } from "react"; // from react
+import { useNavigate } from "react-router-dom"; // from react-router-dom
+import axios from "axios"; // from axios
 
-import he from "he";
+import he from "he"; // for encoding/decoding html and other special characters
 
 export const UserContext = createContext();
 
@@ -28,9 +28,9 @@ export const UserProvider = ({ children }) => {
     avatar: "",
   });
 
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({}); // setting user info for database
 
-  const [isPassMatch, setIsPassMatch] = useState(true);
+  const [isPassMatch, setIsPassMatch] = useState(true); // for password match
 
   // change the user state
   const handleChange = (e) => {
@@ -53,6 +53,7 @@ export const UserProvider = ({ children }) => {
   // register the user
   const navigate = useNavigate();
 
+  // register the user
   const handleuserRegistration = (e) => {
     e.preventDefault();
 
@@ -121,17 +122,9 @@ export const UserProvider = ({ children }) => {
     /* please enter the js code that goes here... */
   `;
 
-  // console.log("the user here", userInfo);
-
   let convertedCode = he.encode(sourceCode);
 
-  // console.log("avatar image here", avatarImage);
-
-  // console.log("the user source code", sourceCode);
-
-  // console.log("the user converted code", convertedCode);
-
-
+  // for saving the draft code
   const handleDraftSave = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -161,16 +154,15 @@ export const UserProvider = ({ children }) => {
 
   }
 
+  // for deleting the draft code
   const deleteDraft = (e, draftId) => {
     e.preventDefault();
     e.stopPropagation();
     // deleting the draft from the database
 
-    console.log(e)
     axios
       .delete(`/api/members/drafts/${draftId}`)
       .then((res) => {
-        console.log("the response from the draft", res);
         if (res.status === 200) {
           window.location.reload();
           navigate("/members/drafts");
@@ -181,8 +173,6 @@ export const UserProvider = ({ children }) => {
       });
   }
 
-
-  console.log("the user avatar here", avatarImage);
 
   return (
     <UserContext.Provider

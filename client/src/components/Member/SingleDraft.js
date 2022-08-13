@@ -1,20 +1,24 @@
-import styled from "styled-components";
-import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import he from "he";
+import { useState, useEffect, useContext } from "react"; // from react
+import { useParams } from "react-router-dom"; // from react-router-dom
+import axios from "axios"; // from axios
 
-import { UserContext } from "../../context/UserContext";
+import styled from "styled-components"; // for styling
 
-import { Editor } from "../Playground/Editor";
-import { Display } from "../Playground/Display";
+import he from "he"; // for encoding/decoding html and other special characters
 
+import { UserContext } from "../../context/UserContext"; // from context
+
+import { Editor } from "../Playground/Editor"; // for editing/displaying the code
+import { Display } from "../Playground/Display"; // for displaying the website
+
+// Single Draft displayed on Member Playground
 export const SingleDraft = () => {
-  const { draftId } = useParams();
-  const {memberId} = useParams();
+  const { draftId } = useParams(); // get draftId from url
+  const {memberId} = useParams(); // get memberId from url
 
-    const [creditToUser, setCreditToUser] = useState(null);
+  const [creditToUser, setCreditToUser] = useState(null); // credit given to user(name is displayed)
 
+  // user context needed for the user
   const {
     htmlCode,
     setHtmlCode,
@@ -25,6 +29,7 @@ export const SingleDraft = () => {
     sourceCode,
   } = useContext(UserContext);
 
+  // get draft info from database
   useEffect(() => {
     axios
       .get(`/api/members/drafts/${draftId}`)

@@ -1,8 +1,10 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; // from react
 
-import CodeEditor from "@uiw/react-textarea-code-editor";
+import styled from "styled-components"; // from styled-components
 
+import CodeEditor from "@uiw/react-textarea-code-editor"; // for editing/displaying the code (Code editor given by the dependency)
+
+// Editor for editing and changing the code
 export const Editor = ({
   displayName,
   placeHolder,
@@ -13,15 +15,19 @@ export const Editor = ({
   // state
   const [open, setOpen] = useState(true);
 
+  // function to collapse/expand the code editor
   const hancleClick = (e) => {
     e.preventDefault();
     setOpen(!open);
   };
 
+  // function to change the code to send it to the database
   const handleChange = (e) => {
     e.preventDefault();
     onChange(e.target.value);
   };
+
+  // keydown event to save the code/ make changes to code
   useEffect(() => {
     return () => {
       document.removeEventListener("keydown", handleChange);

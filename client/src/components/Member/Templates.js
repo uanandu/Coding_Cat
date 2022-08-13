@@ -7,7 +7,7 @@ import { UserContext } from "../../context/UserContext";
 
 export const Templates = () => {
 
-  const { templates, setTemplates } = useContext(UserContext);
+  const { templates, setTemplates , userInfo} = useContext(UserContext);
 
   const templateImages = [
     "https://cdn.discordapp.com/attachments/978673047772991548/1007285586828202025/html-starter.png",
@@ -30,7 +30,7 @@ export const Templates = () => {
     <Wrapper>
       <MemberInstructions>
         <MemberText>
-          <MemberTitle>Hi Member!</MemberTitle>
+          <MemberTitle>Hi @{userInfo.username}!</MemberTitle>
           <p>These are the templates available to you: </p>
         </MemberText>
       </MemberInstructions>
@@ -63,7 +63,11 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const MemberInstructions = styled.div``;
+const MemberInstructions = styled.div`
+position: relative;
+  margin-top: 10vh;
+  text-align: center;
+`;
 const MemberText = styled.div``;
 const MemberTitle = styled.h1``;
 

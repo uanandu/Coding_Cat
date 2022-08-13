@@ -1,7 +1,11 @@
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import { NavLink } from "react-router-dom"; // from react-router-dom
 
+import styled from "styled-components"; // from styled-components
+
+// Coding class for members/user
 export const CodingClasses = () => {
+
+  // Coding class list for members/user
   const codingClass = [
     {
       id: 1,
@@ -16,7 +20,7 @@ export const CodingClasses = () => {
       title: "JavaScript",
       description: "JavaScript by cs50",
       image:
-        "https://cdn.discordapp.com/attachments/978673047772991548/985266344666742784/nodejs-logo-FBE122E377-seeklogo.com.png",
+        "https://cdn.discordapp.com/attachments/978673047772991548/985266345094574120/javascript-js-logo-2949701702-seeklogo.com.png",
       link: "https://www.youtube.com/watch?v=x5trGVMKTdY",
     },
     {
@@ -51,6 +55,8 @@ export const CodingClasses = () => {
       link: "https://www.youtube.com/watch?v=h33Srr5J9nY",
     },
   ];
+
+  
   return (
     <Wrapper>
       <CodingClassesHeader>
@@ -92,10 +98,15 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const CodingClassesHeader = styled.div``;
+const CodingClassesHeader = styled.div`
+  position: relative;
+  top: 10vh;
+`;
 const CodingClassesTitle = styled.h1``;
 
 const CodingClassesBody = styled.div`
+position: relative;
+top: 15vh;
   display: grid;
   grid-template-columns: auto auto;
   gap: 100px;

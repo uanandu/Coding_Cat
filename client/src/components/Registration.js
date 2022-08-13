@@ -1,15 +1,21 @@
-import styled from "styled-components";
+import { NavLink } from "react-router-dom"; // from react-router-dom
+import styled from "styled-components"; // styled-components
+
+import { useAuth0 } from "@auth0/auth0-react"; // from auth0
+
+// for login/logout helper
 import { LoginButton } from "../helpers/LoginButton";
 import { LogoutButton } from "../helpers/LogoutButton";
-import { ErrorPage } from "./ErrorPage";
-import { LoadingPage } from "../helpers/LoadingPage";
-import { useAuth0 } from "@auth0/auth0-react";
-import { NavLink } from "react-router-dom";
+
+import { ErrorPage } from "./ErrorPage"; // for error page
+import { LoadingPage } from "../helpers/LoadingPage"; // for loading page
 
 export const Registration = () => {
+  // getting context from auth0
   const { isAuthenticated, loginWithRedirect, logout, error, user, isLoading } =
     useAuth0();
 
+    // if its loading, shows loading page
   if (isLoading) {
     return (
       <Wrapper>
@@ -18,6 +24,7 @@ export const Registration = () => {
     );
   }
 
+  // if error, shows error page
   if (error) {
     return (
       <Wrapper>
@@ -26,6 +33,7 @@ export const Registration = () => {
     );
   }
 
+  // if not authenticated, shows login button else shows logout button
   if (isAuthenticated) {
     return (
       <Wrapper>

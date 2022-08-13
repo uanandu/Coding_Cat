@@ -66,7 +66,7 @@ export const MemberLanding = () => {
     <Wrapper>
        <MemberInstructions>
         <MemberText>
-          <MemberTitle>Hi {userInfo.username}!</MemberTitle>
+          <MemberTitle>Hi @{userInfo.username}!</MemberTitle>
           <p>These are the our premium features: </p>
         </MemberText>
       </MemberInstructions>
@@ -116,14 +116,15 @@ const MemberText = styled.div`
   justify-content: center;
   align-items: center;
   width: 30vw;
+  margin-top: 10vh;
 `;
 const MemberTitle = styled.h1``;
 
 const FeaturesContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   grid-gap: 100px;
-  margin-top: 50px;
+  margin-top: 10vh;
 `;
 
 const Feature = styled(NavLink)`
@@ -133,9 +134,25 @@ const Feature = styled(NavLink)`
   text-decoration: none;
   color: white;
   transition: 1s ease-in-out;
+  padding: 30px;
+  border-radius: 10px;
+  animation: glowing 1.5s infinite;
+
+  @keyframes glowing {
+    0% {
+      box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
+    }
+    50% {
+      box-shadow: 2px 4px 5px 0px rgba(255, 255, 255, 3);
+    }
+    100% {
+      box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
+    }
+  }
 
   &:hover {
-    border: 1px solid #f5f5f5;
+    box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
+    transform: scale(1.1);
   }
 `;
 const FeatureTitle = styled.h1``;

@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled from "styled-components"; // styled-components
 
+// Loading page for the website
 export const LoadingPage = () => {
   return (
     <Wrapper>

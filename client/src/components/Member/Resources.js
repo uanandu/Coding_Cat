@@ -119,6 +119,8 @@ const FeaturesContainer = styled.div`
 
 // set to navlink to make it clickable
 const Feature = styled.a`
+width: 15vw;
+height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,7 +147,7 @@ const FeatureTile = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25vw;
+  width: 100%;
   height: auto;
 `;
 const FeatureDescription = styled.p``

@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled from "styled-components"; // styled-components
 
+// For the Welcome page:
 export const CodeDisplay = () => {
   return (
     <Wrapper>
@@ -133,8 +134,7 @@ h1.style.color = 'red';
   );
 };
 
-// styles
-
+// styled components
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -143,7 +143,7 @@ const Wrapper = styled.div`
 const CodeBlock = styled.div``;
 
 const HtmlCodeBlock = styled.div`
-position: relative;
+  position: relative;
   background-color: #f5f5f5;
   border-radius: 10px;
   margin-top: 20px;
@@ -151,20 +151,20 @@ position: relative;
   width: 60%;
   height: 15vh;
   color: black;
-  right: -7vw; 
+  right: -7vw;
   animation: float 4s ease-in-out infinite;
-    @keyframes float {
-        0% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0);
-        }
+  @keyframes float {
+    0% {
+      transform: translateY(0);
     }
-    cursor: pointer;
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  cursor: pointer;
 `;
 const CssCodeBlock = styled.div`
   position: relative;
@@ -178,18 +178,18 @@ const CssCodeBlock = styled.div`
   right: -10vw;
 
   animation: float 3.5s ease-in-out infinite;
-    @keyframes float {
-        0% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0);
-        }
+  @keyframes float {
+    0% {
+      transform: translateY(0);
     }
-    cursor: pointer;
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  cursor: pointer;
 `;
 const JsCodeBlock = styled.div`
   position: relative;
@@ -203,18 +203,18 @@ const JsCodeBlock = styled.div`
   right: -5vw;
 
   animation: float 5s ease-in-out infinite;
-    @keyframes float {
-        0% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-        100% {
-            transform: translateY(0);
-        }
+  @keyframes float {
+    0% {
+      transform: translateY(0);
     }
-    cursor: pointer;
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  cursor: pointer;
 `;
 
 const HeaderSection = styled.header`

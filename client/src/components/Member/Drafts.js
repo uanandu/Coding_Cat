@@ -1,15 +1,17 @@
-import styled from "styled-components";
-import axios from "axios";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react"; // from react
+import { NavLink } from "react-router-dom"; // from react-router-dom
+import axios from "axios"; // from axios
 
-import catimage from "../../assets/Coding Cat-logos_transparent.png";
-import { NavLink } from "react-router-dom";
+import styled from "styled-components"; // from styled-components
 
-import Icon from "react-icons-kit";
-import {trashO} from 'react-icons-kit/fa/trashO'
+import { UserContext } from "../../context/UserContext"; // from context
 
-import { UserContext } from "../../context/UserContext";
+import Icon from "react-icons-kit"; // from react-icons-kit (Icon component)
+import {trashO} from 'react-icons-kit/fa/trashO' // from react-icons-kit (Icon component)
 
+import catimage from "../../assets/Coding Cat-logos_transparent.png"; // for default logo
+
+// All the drafts
 export const Drafts = () => {
   const [drafts, setDrafts] = useState([]);
 

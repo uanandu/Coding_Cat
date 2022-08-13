@@ -1,9 +1,9 @@
-import {useAuth0} from "@auth0/auth0-react";
-import styled from "styled-components";
+import {useAuth0} from "@auth0/auth0-react"; // from auth0-react
+import styled from "styled-components"; // from styled-components
 
-
+// Login button
 export const LogoutButton = () => {
-    const {logout} = useAuth0();
+    const {logout} = useAuth0(); // getting context from auth0
 
     return (
         <Wrapper>

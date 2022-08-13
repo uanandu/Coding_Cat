@@ -1,7 +1,8 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import styled from "styled-components";
+import { useAuth0 } from "@auth0/auth0-react"; // from auth0
+import styled from "styled-components"; // styled-components
 
 export const LoginButton = () => {
+  // getting context from auth0
   const { loginWithRedirect } = useAuth0();
 
   return (

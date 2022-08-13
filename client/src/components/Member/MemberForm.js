@@ -1,11 +1,15 @@
-import styled from "styled-components";
-import { useContext, useState } from "react";
+import { useContext } from "react"; // from react
 
-import { UserContext } from "../../context/UserContext";
+import styled from "styled-components"; // from styled-components
 
+import { UserContext } from "../../context/UserContext"; // from context
+
+// Member form to collect user info for mongoDB
 export const MemberForm = () => {
+  // get user info from context
   const { handleChange, handleuserRegistration, setAvatarImage } = useContext(UserContext);
   
+  // add avatar image to user info
   const handleChoose = (e, avatarsrc) => {
     e.preventDefault();
     setAvatarImage(avatarsrc);

@@ -70,8 +70,10 @@ export const WelcomePage = () => {
 
 // styled-components
 const Wrapper = styled.div`
+position: relative;
   width: 100%;
   height: 95vh;
+  top: 5vh;
   position: relative;
   display: flex;
   align-items: center;

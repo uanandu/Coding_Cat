@@ -1,17 +1,20 @@
-import styled from "styled-components";
-import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useEffect, useContext } from "react"; // from react 
+import { useParams } from "react-router-dom"; // from react-router-dom
+import axios from "axios"; // from axios
 
-import { UserContext } from "../../context/UserContext";
+import styled from "styled-components"; // from styled-components
 
-import { Editor } from "../Playground/Editor";
-import { Display } from "../Playground/Display";
+import { UserContext } from "../../context/UserContext"; // from context
 
+import { Editor } from "../Playground/Editor"; // for playground editor
+import { Display } from "../Playground/Display"; // for playground display
+
+// single template display
 export const SingleTemplate = () => {
-  const { templateType } = useParams();
-  const {memberId} = useParams();
+  const { templateType } = useParams(); // get template type from url
+  const {memberId} = useParams(); // get member id from url
 
+  // getting user context
   const {
     htmlCode,
     setHtmlCode,
@@ -22,6 +25,8 @@ export const SingleTemplate = () => {
     sourceCode,
   } = useContext(UserContext);
 
+
+  // fetch call: get single template
   useEffect(() => {
     axios
       .get(`/api/members/templates/${templateType}`)
@@ -32,9 +37,6 @@ export const SingleTemplate = () => {
       })
       .catch((err) => console.log(err));
   }, [memberId, templateType]);
-
-  console.log(cssCode);
-
 
   return (
     <>
@@ -72,6 +74,7 @@ export const SingleTemplate = () => {
 
 // styled components
 const Wrapper = styled.div`
+position: relative;
   background-color: black;
   display: flex;
   justify-content: space-evenly;
@@ -79,6 +82,7 @@ const Wrapper = styled.div`
   flex-basis: 0;
   width: 100%;
   height: 100vh;
+  top: 5vh;
 `;
 
 const TopContainer = styled.div`

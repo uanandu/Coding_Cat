@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"; // from react-router-dom
 
+import styled from "styled-components"; // styled-components
+
+//Select plans option
 export const Plans = () => {
-  const navigate = useNavigate();
 
   return (
     <Wrapper>
@@ -47,10 +48,10 @@ export const Plans = () => {
 // styled-components
 
 const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const RegistrationContainer = styled.div`
@@ -67,7 +68,7 @@ const RegistrationContainer = styled.div`
 const Instructions = styled.div``;
 
 const GuestContainer = styled(NavLink)`
-text-decoration: none;
+  text-decoration: none;
   color: white;
   background-color: black;
   width: 100%;
@@ -119,7 +120,7 @@ const GuestCostText = styled.h1`
 `;
 
 const MemberContainer = styled(NavLink)`
-text-decoration: none;
+  text-decoration: none;
   color: white;
   background-color: black;
   width: 100%;

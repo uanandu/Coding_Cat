@@ -1,10 +1,14 @@
-import styled from "styled-components";
-import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
-import { useContext, useState } from "react";
-import { UserContext } from "../../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react"; // from react
+import { useNavigate } from "react-router-dom"; // from react-router-dom
+import axios from "axios"; // from axios
 
+import styled from "styled-components"; // from styled-components
+
+import { useAuth0 } from "@auth0/auth0-react"; // from auth0
+
+import { UserContext } from "../../context/UserContext"; // from context
+
+// Edit Profile component for the user
 export const EditProfile = () => {
   const navigate = useNavigate();
   const { user } = useAuth0();
@@ -36,8 +40,6 @@ export const EditProfile = () => {
         console.log(err);
       });
   };
-
-console.log("patch the profile", editUser);
 
   return (
     <Wrapper>
