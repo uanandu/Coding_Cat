@@ -182,6 +182,8 @@ export const UserProvider = ({ children }) => {
   }
 
 
+  console.log("the user avatar here", avatarImage);
+
   return (
     <UserContext.Provider
       value={{

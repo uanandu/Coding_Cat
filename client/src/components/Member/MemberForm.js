@@ -5,8 +5,7 @@ import { UserContext } from "../../context/UserContext";
 
 export const MemberForm = () => {
   const { handleChange, handleuserRegistration, setAvatarImage } = useContext(UserContext);
-
-
+  
   const handleChoose = (e, avatarsrc) => {
     e.preventDefault();
     setAvatarImage(avatarsrc);

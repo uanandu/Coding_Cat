@@ -73,6 +73,7 @@ const MemberAvatar = styled.div`
   border-radius: 50%;
   background-color: #f5f5f5;
 `;
+
 const MemberImage = styled.img`
   width: 100%;
   height: 100%;
