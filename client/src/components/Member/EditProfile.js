@@ -2,6 +2,9 @@ import { useContext, useState } from "react"; // from react
 import { useNavigate } from "react-router-dom"; // from react-router-dom
 import axios from "axios"; // from axios
 
+// framer motion
+import { motion } from "framer-motion";
+
 import styled from "styled-components"; // from styled-components
 
 import { useAuth0 } from "@auth0/auth0-react"; // from auth0
@@ -42,74 +45,80 @@ export const EditProfile = () => {
   };
 
   return (
-    <Wrapper>
-      <h1>Edit Profile</h1>
-      <FormContainer>
-        <EditProfileForm onSubmit={handleEditSubmit}>
-          <EditUsername>
-            <EditUsernameLabel>Username:</EditUsernameLabel>
-            <Info>
-              <CurrentUsername>{userInfo.username}</CurrentUsername>
-              <EditUsernameInput
-                type="text"
-                name="username"
-                placeholder="new username"
-                onChange={handleEditChange}
-              />
-            </Info>
-          </EditUsername>
-          <Fullname>
-            <FullnameLabel>Full Name:</FullnameLabel>
-            <Info>
-              <CurrentFullname>{userInfo.fullname}</CurrentFullname>
-              <EditFullnameInput
-                type="text"
-                name="fullname"
-                placeholder="new full-name"
-                onChange={handleEditChange}
-              />
-            </Info>
-          </Fullname>
-          <EditOccupation>
-            <EditOccupationLabel>Occupation:</EditOccupationLabel>
-            <Info>
-              <CurrentOccupation>{userInfo.occupation}</CurrentOccupation>
-              <EditOccupationInput
-                type="text"
-                name="occupation"
-                placeholder="new occupation"
-                onChange={handleEditChange}
-              />
-            </Info>
-          </EditOccupation>
-          <EditBio>
-            <EditBioLabel>Bio:</EditBioLabel>
-            <Info>
-              <CurrentBio>{userInfo.memberbio}</CurrentBio>
-              <EditBioInput
-                type="text"
-                name="memberbio"
-                placeholder="bio"
-                onChange={handleEditChange}
-              />
-            </Info>
-          </EditBio>
-          <EditAge>
-            <EditAgeLabel>Age:</EditAgeLabel>
-            <Info>
-              <CurrentAge>{userInfo.age}</CurrentAge>
-              <EditAgeInput
-                type="number"
-                name="age"
-                placeholder="new age"
-                onChange={handleEditChange}
-              />
-            </Info>
-          </EditAge>
-          <Button>Submit</Button>
-        </EditProfileForm>
-      </FormContainer>
-    </Wrapper>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Wrapper>
+        <h1>Edit Profile</h1>
+        <FormContainer>
+          <EditProfileForm onSubmit={handleEditSubmit}>
+            <EditUsername>
+              <EditUsernameLabel>Username:</EditUsernameLabel>
+              <Info>
+                <CurrentUsername>{userInfo.username}</CurrentUsername>
+                <EditUsernameInput
+                  type="text"
+                  name="username"
+                  placeholder="new username"
+                  onChange={handleEditChange}
+                />
+              </Info>
+            </EditUsername>
+            <Fullname>
+              <FullnameLabel>Full Name:</FullnameLabel>
+              <Info>
+                <CurrentFullname>{userInfo.fullname}</CurrentFullname>
+                <EditFullnameInput
+                  type="text"
+                  name="fullname"
+                  placeholder="new full-name"
+                  onChange={handleEditChange}
+                />
+              </Info>
+            </Fullname>
+            <EditOccupation>
+              <EditOccupationLabel>Occupation:</EditOccupationLabel>
+              <Info>
+                <CurrentOccupation>{userInfo.occupation}</CurrentOccupation>
+                <EditOccupationInput
+                  type="text"
+                  name="occupation"
+                  placeholder="new occupation"
+                  onChange={handleEditChange}
+                />
+              </Info>
+            </EditOccupation>
+            <EditBio>
+              <EditBioLabel>Bio:</EditBioLabel>
+              <Info>
+                <CurrentBio>{userInfo.memberbio}</CurrentBio>
+                <EditBioInput
+                  type="text"
+                  name="memberbio"
+                  placeholder="bio"
+                  onChange={handleEditChange}
+                />
+              </Info>
+            </EditBio>
+            <EditAge>
+              <EditAgeLabel>Age:</EditAgeLabel>
+              <Info>
+                <CurrentAge>{userInfo.age}</CurrentAge>
+                <EditAgeInput
+                  type="number"
+                  name="age"
+                  placeholder="new age"
+                  onChange={handleEditChange}
+                />
+              </Info>
+            </EditAge>
+            <Button>Submit</Button>
+          </EditProfileForm>
+        </FormContainer>
+      </Wrapper>
+    </motion.div>
   );
 };
 

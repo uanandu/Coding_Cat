@@ -1,22 +1,28 @@
-import styled from "styled-components";
-import { useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { useAuth0 } from "@auth0/auth0-react";
+import styled from "styled-components"; // styled-components
+import { useContext, useEffect } from "react"; // from react
+import { NavLink } from "react-router-dom"; // from react-router-dom
+import axios from "axios"; // from axios
 
-import { UserContext } from "../../context/UserContext";
+// framer motion
+import { motion } from "framer-motion";
+
+import { useAuth0 } from "@auth0/auth0-react"; // from auth0
+
+import { UserContext } from "../../context/UserContext"; // for context
 
 export const MemberLanding = () => {
-  const { user} = useAuth0();
+  const { user} = useAuth0(); // get user from auth0
 
-  const {userInfo, setUserInfo} = useContext(UserContext);
+  const {userInfo, setUserInfo} = useContext(UserContext); // get user info from context
 
+  // fetch call: get user info
   useEffect(() => {
     axios.get(`/api/members/${user.name}`).then(res => {
       setUserInfo(res.data.data);
     });
   }, [user]);
 
+  // features available to members
   const memberFeatures = [
     {
       id: 1,
@@ -63,6 +69,11 @@ export const MemberLanding = () => {
   ];
 
   return (
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
     <Wrapper>
        <MemberInstructions>
         <MemberText>
@@ -87,6 +98,7 @@ export const MemberLanding = () => {
 
       </FeaturesContainer>
     </Wrapper>
+  </motion.div>
   );
 }
 

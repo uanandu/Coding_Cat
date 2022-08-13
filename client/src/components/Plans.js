@@ -1,47 +1,55 @@
 import { NavLink } from "react-router-dom"; // from react-router-dom
 
+// framer motion
+import { motion } from "framer-motion";
+
 import styled from "styled-components"; // styled-components
 
 //Select plans option
 export const Plans = () => {
-
   return (
-    <Wrapper>
-      <Instructions>
-        <h1>Please choose a plan:</h1>
-      </Instructions>
-      <RegistrationContainer>
-        <GuestContainer to="/playground">
-          <GuestIllustration
-            src="https://media.giphy.com/media/R4H1oAuFVnEwdsXVoR/giphy.gif"
-            alt="free plan"
-          />
-          <GuestProsList>
-            <GuestProsText>Features:</GuestProsText>
-            <GuestProsItem>Free plan</GuestProsItem>
-            <GuestProsItem>No registration required</GuestProsItem>
-            <GuestProsItem>Playground to test your code</GuestProsItem>
-            <GuestCostText>Free</GuestCostText>
-          </GuestProsList>
-        </GuestContainer>
-        <MemberContainer to="/registration">
-          <MemberIllustration
-            src="https://media.giphy.com/media/daUNvsWuU3s8WeLnq3/giphy.gif"
-            alt="member plan"
-          />
-          <MemberProsList>
-            <MemberProsText>Features:</MemberProsText>
-            <MemberProsItem>Member plan</MemberProsItem>
-            <MemberProsItem>Templates to create your own</MemberProsItem>
-            <MemberProsItem>Drafts to save your work</MemberProsItem>
-            <MemberProsItem>Coding lessons</MemberProsItem>
-            <MemberProsItem>Coding Exercises</MemberProsItem>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Wrapper>
+        <Instructions>
+          <h1>Please choose a plan:</h1>
+        </Instructions>
+        <RegistrationContainer>
+          <GuestContainer to="/playground">
+            <GuestIllustration
+              src="https://media.giphy.com/media/R4H1oAuFVnEwdsXVoR/giphy.gif"
+              alt="free plan"
+            />
+            <GuestProsList>
+              <GuestProsText>Features:</GuestProsText>
+              <GuestProsItem>Free plan</GuestProsItem>
+              <GuestProsItem>No registration required</GuestProsItem>
+              <GuestProsItem>Playground to test your code</GuestProsItem>
+              <GuestCostText>Free</GuestCostText>
+            </GuestProsList>
+          </GuestContainer>
+          <MemberContainer to="/registration">
+            <MemberIllustration
+              src="https://media.giphy.com/media/daUNvsWuU3s8WeLnq3/giphy.gif"
+              alt="member plan"
+            />
+            <MemberProsList>
+              <MemberProsText>Features:</MemberProsText>
+              <MemberProsItem>Member plan</MemberProsItem>
+              <MemberProsItem>Templates to create your own</MemberProsItem>
+              <MemberProsItem>Drafts to save your work</MemberProsItem>
+              <MemberProsItem>Coding lessons</MemberProsItem>
+              <MemberProsItem>Coding Exercises</MemberProsItem>
 
-            <MemberCostText>Registration required</MemberCostText>
-          </MemberProsList>
-        </MemberContainer>
-      </RegistrationContainer>
-    </Wrapper>
+              <MemberCostText>Registration required</MemberCostText>
+            </MemberProsList>
+          </MemberContainer>
+        </RegistrationContainer>
+      </Wrapper>
+    </motion.div>
   );
 };
 

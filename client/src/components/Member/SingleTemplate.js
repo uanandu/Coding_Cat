@@ -2,6 +2,9 @@ import { useEffect, useContext } from "react"; // from react
 import { useParams } from "react-router-dom"; // from react-router-dom
 import axios from "axios"; // from axios
 
+// framer motion
+import { motion } from "framer-motion";
+
 import styled from "styled-components"; // from styled-components
 
 import { UserContext } from "../../context/UserContext"; // from context
@@ -39,7 +42,11 @@ export const SingleTemplate = () => {
   }, [memberId, templateType]);
 
   return (
-    <>
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
       <Wrapper>
         <TopContainer>
           <Editor
@@ -49,6 +56,7 @@ export const SingleTemplate = () => {
             language="html"
             onChange={setHtmlCode}
           />
+          <Divider />
           <Editor
             title="CSS"
             code={cssCode}
@@ -56,6 +64,7 @@ export const SingleTemplate = () => {
             language="css"
             onChange={setCssCode}
           />
+          <Divider />
           <Editor
             title="JS"
             code={jsCode}
@@ -68,7 +77,7 @@ export const SingleTemplate = () => {
           <Display sourceCode={sourceCode} />
         </BottomContainer>
       </Wrapper>
-    </>
+    </motion.div>
   );
 };
 
@@ -81,26 +90,34 @@ position: relative;
   flex-grow: 1;
   flex-basis: 0;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   top: 5vh;
+  overflow: hidden;
 `;
+
+const Divider = styled.div`
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background-color: white;
+`
 
 const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 50%;
+  width: 100%;
   height: 100%;
   left: 0;
   border-bottom: 1px solid black;
-  position: absolute;
+  position: relative;
 `;
 const BottomContainer = styled.div`
   display: flex;
-  width: 50%;
+  width: 100%;
   height: 100vh;
   right: 0;
-  position: absolute;
+  position: relative;
   overflow: hidden;
 
 `;

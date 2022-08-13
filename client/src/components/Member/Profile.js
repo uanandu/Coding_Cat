@@ -1,6 +1,9 @@
-import { useContext, useEffect } from "react"; // from react
+import { useContext, useEffect, useState } from "react"; // from react
 import { NavLink } from "react-router-dom"; // from react-router-dom
 import axios from "axios"; // from axios
+
+// framer motion
+import { motion } from "framer-motion";
 
 import styled from "styled-components"; // from styled-components
 
@@ -17,65 +20,107 @@ export const Profile = () => {
 
   const { userInfo, setUserInfo } = useContext(UserContext); // get user info from context
 
+  // user draft state
+  const [userDrafts, setUserDrafts] = useState([]);
+
   // fetch call: get user info
   useEffect(() => {
     axios.get(`/api/members/${user.name}`).then((res) => {
       setUserInfo(res.data.data);
-    });
+    })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [user]);
+
+  //get the drafts of the user
+  useEffect(() => {
+    axios.get(`/api/drafts/${user.name}`).then((res) => {
+      setUserDrafts(res.data.data);
+    })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [user]);
 
   return (
-    <Wrapper>
-      <ProfileWelcome>
-        <MemberTitle>
-          Profile{" "}
-          <img
-            style={{ width: "80px", height: "auto" }}
-            src="https://media.giphy.com/media/RhGbWYqUJdPWM18zI6/giphy.gif"
-            alt="Coding Cat"
-          />
-        </MemberTitle>
-        <MemberSubTitle>
-          This is your profile @{userInfo.username}
-          <IconMember
-            src="https://media.giphy.com/media/U6e6JUgqF684qSunZ2/giphy.gif"
-            alt="Coding Cat"
-          />
-        </MemberSubTitle>
-      </ProfileWelcome>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Wrapper>
+        <ProfileWelcome>
+          <MemberTitle>
+            Profile{" "}
+            <img
+              style={{ width: "80px", height: "auto" }}
+              src="https://media.giphy.com/media/RhGbWYqUJdPWM18zI6/giphy.gif"
+              alt="Coding Cat"
+            />
+          </MemberTitle>
+          <MemberSubTitle>
+            This is your profile @{userInfo.username}
+            <IconMember
+              src="https://media.giphy.com/media/U6e6JUgqF684qSunZ2/giphy.gif"
+              alt="Coding Cat"
+            />
+          </MemberSubTitle>
+        </ProfileWelcome>
 
-      <TopContainer>
-        <MemberDetails>
-          <MemberInfo>Username: @{userInfo.username}</MemberInfo>
-          <MemberInfo>Name: {userInfo.fullname}</MemberInfo>
-          <MemberInfo>Email: {userInfo.email}</MemberInfo>
-          <MemberInfo>Age: {userInfo.age}</MemberInfo>
-          <MemberInfo>Occupation: {userInfo.occupation}</MemberInfo>
-          <MemberInfo>Bio: {userInfo.memberbio}</MemberInfo>
-        </MemberDetails>
-        <MemberOptionsDiv>
-          <CodePlayground to="/members/playground">
-            Code Playground
-          </CodePlayground>
-          <EditProfile to="/members/profile/profile-edit">
-            Edit Profile
-          </EditProfile>
-        </MemberOptionsDiv>
-        <MemberAvatar>
-          <MemberImage src={userInfo.avatar} />
-        </MemberAvatar>
-      </TopContainer>
+        <TopContainer>
+          <MemberDetails>
+            <MemberInfo>Username: @{userInfo.username}</MemberInfo>
+            <MemberInfo>Name: {userInfo.fullname}</MemberInfo>
+            <MemberInfo>Email: {userInfo.email}</MemberInfo>
+            <MemberInfo>Age: {userInfo.age}</MemberInfo>
+            <MemberInfo>Occupation: {userInfo.occupation}</MemberInfo>
+            <MemberInfo>Bio: {userInfo.memberbio}</MemberInfo>
+          </MemberDetails>
+          <MemberOptionsDiv>
+            <CodePlayground to="/members/playground">
+              Code Playground
+            </CodePlayground>
+            <EditProfile to="/members/profile/profile-edit">
+              Edit Profile
+            </EditProfile>
+          </MemberOptionsDiv>
+          <MemberAvatar>
+            <MemberImage src={userInfo.avatar} />
+          </MemberAvatar>
+        </TopContainer>
 
-      <MemberInstructions>
-        <MemberText>
-          Welcome to your profile! Here you can see your progress and edit your
-          profile.
-        </MemberText>
-      </MemberInstructions>
-      <DraftsSection>here goes the drafts that you have made</DraftsSection>
-      <LogoutSection>You may logout if you wish here.</LogoutSection>
-      <LogoutButton />
-    </Wrapper>
+        <MemberInstructions>
+          <MemberText>
+            Welcome to your profile! Here you can see your progress and edit
+            your profile.
+          </MemberText>
+        </MemberInstructions>
+        <DraftsSection>
+          {
+            userDrafts.length > 0 ? (
+              userDrafts.map((draft) => {
+                return (
+                  <DraftCard key={draft._id} to={`/members/drafts/${draft._id}`}>
+                    <DraftImage src={catImage} alt="draft" />
+                    <DraftTitle>Draft Id: {draft._id}</DraftTitle>
+                    <DraftTitle>Credits: {draft.user}</DraftTitle>
+                  </DraftCard>
+                );
+              }
+              )
+            ) : (
+              <>
+                <DraftImage src="https://media.giphy.com/media/1hMmyAXTnxxlsW2dyq/giphy.gif" alt="draft" />
+                Nothing to see here but me.
+              </>
+            )
+          }
+        </DraftsSection>
+        <LogoutSection>You may logout if you wish here.</LogoutSection>
+        <LogoutButton />
+      </Wrapper>
+    </motion.div>
   );
 };
 
@@ -167,15 +212,52 @@ const MemberInstructions = styled.div``;
 const MemberText = styled.h5``;
 
 const DraftsSection = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
   justify-content: center;
   align-items: center;
   width: 80vw;
-  height: 40vw;
+  height: 30vw;
   border: 1px solid white;
   border-radius: 5px;
   margin: 10px;
+  position: relative;
 `;
+
+const DraftCard = styled(NavLink)`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  width: 10vw;
+  height: auto;
+  padding: 20px;
+  margin: 0 20px 0 20px;
+  box-shadow: 2px 2px 5px 4px rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  transition: 1s ease-in-out;
+  &:focus {
+    outline: none;
+    box-shadow: 2px 4px 7px 0px rgba(255, 255, 255, 2);
+  }
+
+  &:hover {
+    outline: none;
+    transform: scale(1.2);
+    box-shadow: 2px 4px 7px 0px rgba(255, 255, 255, 2);
+  }
+`;
+const DraftImage = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+`;
+
+const DraftTitle = styled.h3``;
 
 const LogoutSection = styled.div`
   display: flex;

@@ -5,6 +5,8 @@ import axios from "axios";
 import { CodeDisplay } from "./CodeDisplay";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { motion } from "framer-motion";
+
 export const WelcomePage = () => {
   const { user } = useAuth0();
 
@@ -26,6 +28,11 @@ export const WelcomePage = () => {
   }
 
   return (
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
     <Wrapper>
       <LeftDiv>
         <ImageDiv>
@@ -65,6 +72,7 @@ export const WelcomePage = () => {
         </BottomRightDiv>
       </RightDiv>
     </Wrapper>
+    </motion.div>
   );
 };
 

@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom"; // from react-router-dom
 
+// framer motion
+import { motion } from "framer-motion";
+
 import styled from "styled-components"; // from styled-components
 
 // Coding class for members/user
 export const CodingClasses = () => {
-
   // Coding class list for members/user
   const codingClass = [
     {
@@ -56,33 +58,42 @@ export const CodingClasses = () => {
     },
   ];
 
-  
   return (
-    <Wrapper>
-      <CodingClassesHeader>
-        <CodingClassesTitle>Coding Classes here</CodingClassesTitle>
-      </CodingClassesHeader>
-      <CodingClassesBody>
-        {codingClass.length > 0 ? (
-          codingClass.map((codingClass) => {
-            return (
-              <CodingClassCard key={codingClass._id}>
-                <a style={{color: "white", textDecoration:"none"}} href={codingClass.link} target="blank">
-                  <CodingClassImage
-                    src={codingClass.image}
-                    alt="coding class"
-                  />
-                  <CodingClassTitle>{codingClass.title}</CodingClassTitle>
-                  <CodingClassInfo>{codingClass.description}</CodingClassInfo>
-                </a>
-              </CodingClassCard>
-            );
-          })
-        ) : (
-          <p>No coding classes yet</p>
-        )}
-      </CodingClassesBody>
-    </Wrapper>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Wrapper>
+        <CodingClassesHeader>
+          <CodingClassesTitle>Coding Classes here</CodingClassesTitle>
+        </CodingClassesHeader>
+        <CodingClassesBody>
+          {codingClass.length > 0 ? (
+            codingClass.map((codingClass) => {
+              return (
+                <CodingClassCard key={codingClass._id}>
+                  <a
+                    style={{ color: "white", textDecoration: "none" }}
+                    href={codingClass.link}
+                    target="blank"
+                  >
+                    <CodingClassImage
+                      src={codingClass.image}
+                      alt="coding class"
+                    />
+                    <CodingClassTitle>{codingClass.title}</CodingClassTitle>
+                    <CodingClassInfo>{codingClass.description}</CodingClassInfo>
+                  </a>
+                </CodingClassCard>
+              );
+            })
+          ) : (
+            <p>No coding classes yet</p>
+          )}
+        </CodingClassesBody>
+      </Wrapper>
+    </motion.div>
   );
 };
 
@@ -105,8 +116,8 @@ const CodingClassesHeader = styled.div`
 const CodingClassesTitle = styled.h1``;
 
 const CodingClassesBody = styled.div`
-position: relative;
-top: 15vh;
+  position: relative;
+  top: 15vh;
   display: grid;
   grid-template-columns: auto auto;
   gap: 100px;

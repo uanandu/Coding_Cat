@@ -323,6 +323,31 @@ const deleteDraft = async (req, res) => {
   client.close();
 };
 
+// get drafts by user email
+const getDraftsByUser = async (req, res) => {
+  const emailId = req.params.emailId;
+
+  const client = new MongoClient(MONGO_URI, options);
+
+  const db = client.db("coding_cat");
+
+  await client.connect();
+
+  try {
+    const drafts = await db.collection("drafts").find({ email: emailId }).toArray();
+
+    res.status(200).json({
+      status: 200,
+      data: drafts,
+      message: "Drafts found!",
+    });
+  } catch (err) {
+    res.status(500).json({ status: 500, message: "Draft query failed!" });
+  }
+
+  client.close();
+};
+
 module.exports = {
   getTemplates,
   getTemplateById,
@@ -333,4 +358,5 @@ module.exports = {
   getDrafts,
   getDraftById,
   deleteDraft,
+  getDraftsByUser,
 };

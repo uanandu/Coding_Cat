@@ -2,12 +2,15 @@ import { useState, useEffect, useContext } from "react"; // from react
 import { NavLink } from "react-router-dom"; // from react-router-dom
 import axios from "axios"; // from axios
 
+// framer motion
+import { motion } from "framer-motion";
+
 import styled from "styled-components"; // from styled-components
 
 import { UserContext } from "../../context/UserContext"; // from context
 
 import Icon from "react-icons-kit"; // from react-icons-kit (Icon component)
-import {trashO} from 'react-icons-kit/fa/trashO' // from react-icons-kit (Icon component)
+import { trashO } from "react-icons-kit/fa/trashO"; // from react-icons-kit (Icon component)
 
 import catimage from "../../assets/Coding Cat-logos_transparent.png"; // for default logo
 
@@ -15,7 +18,7 @@ import catimage from "../../assets/Coding Cat-logos_transparent.png"; // for def
 export const Drafts = () => {
   const [drafts, setDrafts] = useState([]);
 
-  const {deleteDraft} = useContext(UserContext);
+  const { deleteDraft } = useContext(UserContext);
 
   useEffect(() => {
     axios
@@ -29,31 +32,40 @@ export const Drafts = () => {
   }, []);
 
   return (
-    <Wrapper>
-      <DraftsHeader>
-        <DraftsTitle>Drafts here</DraftsTitle>
-      </DraftsHeader>
-      <DraftsBody>
-        {drafts.length > 0 ? (
-          drafts.map((draft) => {
-            return (
-              <DraftCard key={draft._id} to={`/members/drafts/${draft._id}`}>
-                <DraftImage src={catimage} alt="draft" />
-                <DraftTitle>Draft Id: {draft._id}</DraftTitle>
-                <DraftTitle>Credits: {draft.user}</DraftTitle>
-                <EditArea>
-                  <DeleteButton type="submit" onClick={(e) => deleteDraft(e,draft._id)}>
-                    <Icon icon={trashO} size={20}/>
-                  </DeleteButton>
-                </EditArea>
-              </DraftCard>
-            );
-          })
-        ) : (
-          <p>No drafts yet</p>
-        )}
-      </DraftsBody>
-    </Wrapper>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Wrapper>
+        <DraftsHeader>
+          <DraftsTitle>Drafts here</DraftsTitle>
+        </DraftsHeader>
+        <DraftsBody>
+          {drafts.length > 0 ? (
+            drafts.map((draft) => {
+              return (
+                <DraftCard key={draft._id} to={`/members/drafts/${draft._id}`}>
+                  <DraftImage src={catimage} alt="draft" />
+                  <DraftTitle>Draft Id: {draft._id}</DraftTitle>
+                  <DraftTitle>Credits: {draft.user}</DraftTitle>
+                  <EditArea>
+                    <DeleteButton
+                      type="submit"
+                      onClick={(e) => deleteDraft(e, draft._id)}
+                    >
+                      <Icon icon={trashO} size={20} />
+                    </DeleteButton>
+                  </EditArea>
+                </DraftCard>
+              );
+            })
+          ) : (
+            <p>No drafts yet</p>
+          )}
+        </DraftsBody>
+      </Wrapper>
+    </motion.div>
   );
 };
 
@@ -75,19 +87,19 @@ const DraftsTitle = styled.h1``;
 const DraftsBody = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-gap: 20px;
+  grid-gap: 40px;
   justify-content: center;
   align-items: center;
 `;
 
 const DraftCard = styled(NavLink)`
-position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
   color: white;
-  width: 20vw;
+  width: 15vw;
   height: auto;
   padding: 20px;
   margin: 0 20px 0 20px;
@@ -105,7 +117,6 @@ position: relative;
     transform: scale(1.2);
     box-shadow: 2px 4px 7px 0px rgba(255, 255, 255, 2);
   }
-  
 `;
 const DraftImage = styled.img`
   width: 100%;
@@ -113,11 +124,11 @@ const DraftImage = styled.img`
   object-fit: contain;
 `;
 const DraftTitle = styled.h1``;
-const EditArea = styled.div``
+const EditArea = styled.div``;
 const DeleteButton = styled.button`
-border-radius: 5px;
-cursor: pointer;
-transition: 1s ease-in-out;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 1s ease-in-out;
   &:hover {
     outline: none;
     box-shadow: 2px 4px 7px 0px rgba(255, 255, 255, 2);

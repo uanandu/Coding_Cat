@@ -1,5 +1,8 @@
 import { useContext } from "react"; // from react
 
+// framer motion
+import { motion } from "framer-motion";
+
 import styled from "styled-components"; // from styled-components
 
 import { UserContext } from "../../context/UserContext"; // from context
@@ -16,6 +19,11 @@ export const MemberForm = () => {
   };
 
   return (
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
     <Wrapper>
       <FormContainer>
         <MemberProfileForm onSubmit={handleuserRegistration}>
@@ -40,21 +48,21 @@ export const MemberForm = () => {
           </MemberFullNameDiv>
           <MemberAvatarDiv>
           <AvatarImagesDiv>
-            <button type="button" onClick={(e)=> handleChoose(e, "https://cdn.discordapp.com/attachments/978673047772991548/1007022669931233331/peep-51.png")}>
+            <AvataButton type="button" onClick={(e)=> handleChoose(e, "https://cdn.discordapp.com/attachments/978673047772991548/1007022669931233331/peep-51.png")}>
             <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022669931233331/peep-51.png" />
-            </button>
-            <button type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022591527100466/peep-37.png")}>
+            </AvataButton>
+            <AvataButton type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022591527100466/peep-37.png")}>
             <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022591527100466/peep-37.png" />
-            </button>
-            <button type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022590876991539/peep-39.png")}>
+            </AvataButton>
+            <AvataButton type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022590876991539/peep-39.png")}>
             <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022590876991539/peep-39.png" />
-            </button>
-            <button type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022590558220338/peep-32.png")}>
+            </AvataButton>
+            <AvataButton type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022590558220338/peep-32.png")}>
             <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022590558220338/peep-32.png" />
-            </button>
-            <button type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022589882925136/peep-19.png")}>
+            </AvataButton>
+            <AvataButton type="button" onClick={(e)=> handleChoose(e,"https://cdn.discordapp.com/attachments/978673047772991548/1007022589882925136/peep-19.png")}>
             <MemberAvatar  src="https://cdn.discordapp.com/attachments/978673047772991548/1007022589882925136/peep-19.png" />
-            </button>
+            </AvataButton>
           </AvatarImagesDiv>
           </MemberAvatarDiv>
           <MemberEmailDiv>
@@ -104,6 +112,7 @@ export const MemberForm = () => {
         </MemberProfileForm>
       </FormContainer>
     </Wrapper>
+  </motion.div>
   );
 };
 
@@ -111,6 +120,7 @@ export const MemberForm = () => {
 const Wrapper = styled.div`
   width: 100%;
   height: 95vh;
+  top: 5vh;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -127,8 +137,8 @@ const FormContainer = styled.div`
   align-items: center;
   justify-content: space-evenly;
   box-shadow: 2px 2px 5px 0px rgba(255, 255, 255, 1);
-  height: 60%;
-  width: 60vw;
+  height: 70%;
+  width: 70vw;
   margin-right: 20px;
   animation: glowing 1.5s infinite;
 
@@ -268,7 +278,19 @@ const MemberAvatarDiv = styled.div`
   justify-content: space-evenly;
 `;
 const AvataButton = styled.button`
+  cursor: pointer;
 
+  &:focus {
+    border: 1px solid red;
+  }
+
+  &:hover {
+    outline: none;
+  }
+
+  &:active {
+    border: 1px solid red;
+  }
 `
 const AvatarImagesDiv = styled.div`
   display: flex;

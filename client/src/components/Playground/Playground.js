@@ -80,7 +80,9 @@ const Wrapper = styled.div`
   flex-basis: 0;
   width: 100%;
   height: 100vh;
+  top: 5vh;
   overflow: hidden;
+  position: relative;
 `;
 
 const TopContainer = styled.div`

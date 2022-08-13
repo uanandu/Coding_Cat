@@ -3,11 +3,13 @@ import { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
+// framer motion
+import { motion } from "framer-motion";
+
 import { UserContext } from "../../context/UserContext";
 
 export const Templates = () => {
-
-  const { templates, setTemplates , userInfo} = useContext(UserContext);
+  const { templates, setTemplates, userInfo } = useContext(UserContext);
 
   const templateImages = [
     "https://cdn.discordapp.com/attachments/978673047772991548/1007285586828202025/html-starter.png",
@@ -27,26 +29,32 @@ export const Templates = () => {
   }, []);
 
   return (
-    <Wrapper>
-      <MemberInstructions>
-        <MemberText>
-          <MemberTitle>Hi @{userInfo.username}!</MemberTitle>
-          <p>These are the templates available to you: </p>
-        </MemberText>
-      </MemberInstructions>
-      <FeaturesContainer>
-        {templates.map((template, index) => {
-          return (
-            <Feature key={index} to={`/members/templates/${template.type}`}>
-              <FeatureTitle>{template.type}</FeatureTitle>
-              <FeatureTile>
-                <FeatureImage src={templateImages[index]} />
-              </FeatureTile>
-            </Feature>
-          );
-        })}
-      </FeaturesContainer>
-    </Wrapper>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Wrapper>
+        <MemberInstructions>
+          <MemberText>
+            <MemberTitle>Hi @{userInfo.username}!</MemberTitle>
+            <p>These are the templates available to you: </p>
+          </MemberText>
+        </MemberInstructions>
+        <FeaturesContainer>
+          {templates.map((template, index) => {
+            return (
+              <Feature key={index} to={`/members/templates/${template.type}`}>
+                <FeatureTitle>{template.type}</FeatureTitle>
+                <FeatureTile>
+                  <FeatureImage src={templateImages[index]} />
+                </FeatureTile>
+              </Feature>
+            );
+          })}
+        </FeaturesContainer>
+      </Wrapper>
+    </motion.div>
   );
 };
 
@@ -64,7 +72,7 @@ const Wrapper = styled.div`
 `;
 
 const MemberInstructions = styled.div`
-position: relative;
+  position: relative;
   margin-top: 10vh;
   text-align: center;
 `;

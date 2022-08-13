@@ -2,6 +2,9 @@ import { useState, useEffect } from "react"; // from react
 
 import styled from "styled-components"; // from styled-components
 
+// framer motion
+import { motion } from "framer-motion";
+
 import CodeEditor from "@uiw/react-textarea-code-editor"; // for editing/displaying the code (Code editor given by the dependency)
 
 // Editor for editing and changing the code
@@ -35,10 +38,14 @@ export const Editor = ({
   }, [handleChange]);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Wrapper
         style={{
-          flexGrow: open ? "1" : "0",
+          height: open ? "calc(90vh/3)" : "calc(30vh/3)",
         }}
       >
         <TitleArea>
@@ -49,6 +56,13 @@ export const Editor = ({
           <CollapseButton onClick={hancleClick}>
             {open ? "Collapse 🤛🏽" : "Expand 🤌🏽"}
           </CollapseButton>
+          <ClearButton 
+            onClick={() => {
+              onChange("");
+            }}
+          >
+            clear
+          </ClearButton>
         </TitleArea>
         <CodeEditor
           onChange={(e) => {
@@ -71,12 +85,13 @@ export const Editor = ({
           }}
         />
       </Wrapper>
-    </>
+    </motion.div>
   );
 };
 
 // styled components
 const Wrapper = styled.div`
+width: 100%;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -86,6 +101,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
+  position: relative;
 `;
 
 const TitleArea = styled.div`
@@ -111,6 +127,13 @@ const TitleText = styled.h3``;
 const TitleIcon = styled.img``;
 
 const CollapseButton = styled.button`
+  border-radius: 10px;
+  width: 100px;
+  font-weight: 700;
+  cursor: pointer;
+`;
+
+const ClearButton = styled.button`
   border-radius: 10px;
   width: 100px;
   font-weight: 700;

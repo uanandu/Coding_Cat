@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom"; // from react-router-dom
 import styled from "styled-components"; // styled-components
 
+// framer motion
+import { motion } from "framer-motion";
+
 import { useAuth0 } from "@auth0/auth0-react"; // from auth0
 
 // for login/logout helper
@@ -15,7 +18,7 @@ export const Registration = () => {
   const { isAuthenticated, loginWithRedirect, logout, error, user, isLoading } =
     useAuth0();
 
-    // if its loading, shows loading page
+  // if its loading, shows loading page
   if (isLoading) {
     return (
       <Wrapper>
@@ -36,39 +39,49 @@ export const Registration = () => {
   // if not authenticated, shows login button else shows logout button
   if (isAuthenticated) {
     return (
-      <Wrapper>
-        <WelcomeText>Hello {user.name} </WelcomeText>
-        <InstructionText>
-          You are logged in! You can now access the full application.
-        </InstructionText>{" "}
-        <RedirectButton to="/member">Set up profile</RedirectButton>
-        <RedirectButton to="/members/landing">Go to Member Area</RedirectButton>
-        <LogoutButton />
-      </Wrapper>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Wrapper>
+          <WelcomeText>Hello {user.name} </WelcomeText>
+          <InstructionText>
+            You are logged in! You can now access the full application.
+          </InstructionText>{" "}
+          <RedirectButton to="/member">Set up profile</RedirectButton>
+          <RedirectButton to="/members/landing">
+            Go to Member Area
+          </RedirectButton>
+          <LogoutButton />
+        </Wrapper>
+      </motion.div>
     );
   } else {
     return (
-      <Wrapper>
-        <InstructionText>
-          There are two steps to becoming a member:
-        </InstructionText>
-        <InstructionText>
-          1. Sign up for an account
-        </InstructionText>
-        <InstructionText>
-          Click the button below to sign up for an account.
-        </InstructionText>
-        <LoginButton /> {/* become a member */} 
-        <InstructionText>
-          2. Set up your profile
-        </InstructionText>
-        <InstructionText>
-          Once you have signed up, you will be able to set up your profile.
-        </InstructionText>
-        <InstructionText>
-          This is a free service. No credit card required.
-        </InstructionText>
-      </Wrapper>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Wrapper>
+          <InstructionText>
+            There are two steps to becoming a member:
+          </InstructionText>
+          <InstructionText>1. Sign up for an account</InstructionText>
+          <InstructionText>
+            Click the button below to sign up for an account.
+          </InstructionText>
+          <LoginButton /> {/* become a member */}
+          <InstructionText>2. Set up your profile</InstructionText>
+          <InstructionText>
+            Once you have signed up, you will be able to set up your profile.
+          </InstructionText>
+          <InstructionText>
+            This is a free service. No credit card required.
+          </InstructionText>
+        </Wrapper>
+      </motion.div>
     );
   }
 };

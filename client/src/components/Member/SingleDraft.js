@@ -2,6 +2,9 @@ import { useState, useEffect, useContext } from "react"; // from react
 import { useParams } from "react-router-dom"; // from react-router-dom
 import axios from "axios"; // from axios
 
+// framer motion
+import { motion } from "framer-motion";
+
 import styled from "styled-components"; // for styling
 
 import he from "he"; // for encoding/decoding html and other special characters
@@ -14,7 +17,7 @@ import { Display } from "../Playground/Display"; // for displaying the website
 // Single Draft displayed on Member Playground
 export const SingleDraft = () => {
   const { draftId } = useParams(); // get draftId from url
-  const {memberId} = useParams(); // get memberId from url
+  const { memberId } = useParams(); // get memberId from url
 
   const [creditToUser, setCreditToUser] = useState(null); // credit given to user(name is displayed)
 
@@ -43,9 +46,12 @@ export const SingleDraft = () => {
       .catch((err) => console.log(err));
   }, [memberId, draftId]);
 
-
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Wrapper>
         <TopContainer>
           <Editor
@@ -72,56 +78,64 @@ export const SingleDraft = () => {
         </TopContainer>
         <BottomContainer>
           <Display sourceCode={sourceCode} />
-          {
-            creditToUser &&
+          {creditToUser && (
             <CreditToUser>
-                <h4>Credit to:</h4>
-                <h3 style={{fontStyle:"italic"}}>{creditToUser}</h3>
+              <h4>Credit to:</h4>
+              <h3 style={{ fontStyle: "italic" }}>{creditToUser}</h3>
             </CreditToUser>
-          }
+          )}
         </BottomContainer>
       </Wrapper>
-    </>
+    </motion.div>
   );
 };
 
 // styled components
 const Wrapper = styled.div`
+position: relative;
   background-color: black;
   display: flex;
   justify-content: space-evenly;
   flex-grow: 1;
   flex-basis: 0;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
+  top: 5vh;
+  overflow: hidden;
 `;
 
 const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 50%;
-  height: 100vh;
+  width: 80%;
+  height: 100%;
   left: 0;
-  margin-top: 4vh;
   border-bottom: 1px solid black;
-  position: absolute;
+  position: relative;
 `;
 const BottomContainer = styled.div`
   display: flex;
-  width: 50%;
+  width: 100%;
   height: 100vh;
   right: 0;
-  position: absolute;
+  position: relative;
   overflow: hidden;
+  border-right: 1px solid white;
+  margin-left: 15px;
 `;
 
 const CreditToUser = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 10vw;
-    height: auto;
-    color: white;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 5%;
+  height: 93vh;
+  top: 6vh;
+  right: 0;
+  color: white;
+  position: fixed;
+  background-color: white;
+  color: black;
+`;

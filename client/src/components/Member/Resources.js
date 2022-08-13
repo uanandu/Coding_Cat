@@ -1,7 +1,11 @@
-import styled from "styled-components";
+import styled from "styled-components"; // styled-components
+
+// framer motion
+import { motion } from "framer-motion";
 
 export const Resources = () => {
 
+  // available resources
     const resources = [
         {
             id: 1,
@@ -69,6 +73,11 @@ export const Resources = () => {
     ];
 
   return (
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
     <Wrapper>
          <MemberText>
           <MemberTitle>Hi Member!</MemberTitle>
@@ -88,6 +97,7 @@ export const Resources = () => {
         })}
       </FeaturesContainer>
     </Wrapper>
+  </motion.div>
   );
 };
 
