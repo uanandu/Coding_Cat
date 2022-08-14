@@ -77,13 +77,13 @@ export const SingleDraft = () => {
           />
         </TopContainer>
         <BottomContainer>
-          <Display sourceCode={sourceCode} />
           {creditToUser && (
             <CreditToUser>
               <h4>Credit to:</h4>
               <h3 style={{ fontStyle: "italic" }}>{creditToUser}</h3>
             </CreditToUser>
           )}
+          <Display sourceCode={sourceCode} />
         </BottomContainer>
       </Wrapper>
     </motion.div>
@@ -92,7 +92,7 @@ export const SingleDraft = () => {
 
 // styled components
 const Wrapper = styled.div`
-position: relative;
+  position: relative;
   background-color: black;
   display: flex;
   justify-content: space-evenly;
@@ -116,6 +116,7 @@ const TopContainer = styled.div`
 `;
 const BottomContainer = styled.div`
   display: flex;
+  justify-content: space-around;
   width: 100%;
   height: 100vh;
   right: 0;
@@ -130,12 +131,11 @@ const CreditToUser = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 5%;
+  width: 15%;
   height: 93vh;
   top: 6vh;
   right: 0;
   color: white;
-  position: fixed;
-  background-color: white;
-  color: black;
+  position: relative;
+  color: white;
 `;

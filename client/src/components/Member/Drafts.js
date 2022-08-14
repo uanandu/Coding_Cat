@@ -48,7 +48,7 @@ export const Drafts = () => {
                 <DraftCard key={draft._id} to={`/members/drafts/${draft._id}`}>
                   <DraftImage src={catimage} alt="draft" />
                   <DraftTitle>Draft Id: {draft._id}</DraftTitle>
-                  <DraftTitle>Credits: {draft.user}</DraftTitle>
+                  <DraftTitle>Credits: @{draft.user}</DraftTitle>
                   <EditArea>
                     <DeleteButton
                       type="submit"
@@ -74,22 +74,27 @@ const Wrapper = styled.div`
   color: white;
   background-color: black;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 5vh;
 `;
 
 const DraftsHeader = styled.div``;
-const DraftsTitle = styled.h1``;
+const DraftsTitle = styled.h1`
+  margin-top: 5vh;
+`;
 
 const DraftsBody = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-gap: 40px;
+  grid-gap: 5vw;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const DraftCard = styled(NavLink)`
@@ -98,6 +103,7 @@ const DraftCard = styled(NavLink)`
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+  text-align: center;
   color: white;
   width: 15vw;
   height: auto;
@@ -123,7 +129,11 @@ const DraftImage = styled.img`
   height: auto;
   object-fit: contain;
 `;
-const DraftTitle = styled.h1``;
+const DraftTitle = styled.h3`
+  margin: 5px 0 5px 0;
+  font-size: 1.2rem;
+  font-style: italic;
+`;
 const EditArea = styled.div``;
 const DeleteButton = styled.button`
   border-radius: 5px;

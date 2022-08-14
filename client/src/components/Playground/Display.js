@@ -28,7 +28,6 @@ const DisplayWrapper = styled.div`
   width: 48vh;
   background-color: antiquewhite;
   margin: 10px;
-  border: 5px solid black;
   display: flex;
   flex-direction: column;
   border-radius: 10px;

@@ -25,9 +25,11 @@ export const Profile = () => {
 
   // fetch call: get user info
   useEffect(() => {
-    axios.get(`/api/members/${user.name}`).then((res) => {
-      setUserInfo(res.data.data);
-    })
+    axios
+      .get(`/api/members/${user.name}`)
+      .then((res) => {
+        setUserInfo(res.data.data);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -35,9 +37,11 @@ export const Profile = () => {
 
   //get the drafts of the user
   useEffect(() => {
-    axios.get(`/api/drafts/${user.name}`).then((res) => {
-      setUserDrafts(res.data.data);
-    })
+    axios
+      .get(`/api/drafts/${user.name}`)
+      .then((res) => {
+        setUserDrafts(res.data.data);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -60,7 +64,7 @@ export const Profile = () => {
             />
           </MemberTitle>
           <MemberSubTitle>
-            This is your profile @{userInfo.username}
+            Here is your profile @{userInfo.username}
             <IconMember
               src="https://media.giphy.com/media/U6e6JUgqF684qSunZ2/giphy.gif"
               alt="Coding Cat"
@@ -97,27 +101,27 @@ export const Profile = () => {
           </MemberText>
         </MemberInstructions>
         <DraftsSection>
-          {
-            userDrafts.length > 0 ? (
-              userDrafts.map((draft) => {
-                return (
-                  <DraftCard key={draft._id} to={`/members/drafts/${draft._id}`}>
-                    <DraftImage src={catImage} alt="draft" />
-                    <DraftTitle>Draft Id: {draft._id}</DraftTitle>
-                    <DraftTitle>Credits: {draft.user}</DraftTitle>
-                  </DraftCard>
-                );
-              }
-              )
-            ) : (
-              <>
-                <DraftImage src="https://media.giphy.com/media/1hMmyAXTnxxlsW2dyq/giphy.gif" alt="draft" />
-                Nothing to see here but me.
-              </>
-            )
-          }
+          {userDrafts.length > 0 ? (
+            userDrafts.map((draft) => {
+              return (
+                <DraftCard key={draft._id} to={`/members/drafts/${draft._id}`}>
+                  <DraftImage src={catImage} alt="draft" />
+                  <DraftTitle>Draft Id: {draft._id}</DraftTitle>
+                  <DraftTitle>Credits: @{draft.user}</DraftTitle>
+                </DraftCard>
+              );
+            })
+          ) : (
+            <>
+              <DraftImage
+                src="https://media.giphy.com/media/1hMmyAXTnxxlsW2dyq/giphy.gif"
+                alt="draft"
+              />
+              Nothing to see here but me.
+            </>
+          )}
         </DraftsSection>
-        <LogoutSection>You may logout if you wish here.</LogoutSection>
+        <LogoutSection>You may logout down here if you wish.</LogoutSection>
         <LogoutButton />
       </Wrapper>
     </motion.div>
@@ -145,6 +149,7 @@ const ProfileWelcome = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 5vh;
 `;
 
 const MemberTitle = styled.h1`
@@ -171,12 +176,17 @@ const TopContainer = styled.div`
 `;
 
 const MemberDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: auto;
+  height: 20vh;
   padding: 20px;
   border-radius: 5px;
   margin-right: 50px;
   cursor: pointer;
   animation: glowing 1.5s infinite;
-
+  font-style: italic;
   @keyframes glowing {
     0% {
       box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
@@ -209,7 +219,7 @@ const MemberImage = styled.img`
 `;
 
 const MemberInstructions = styled.div``;
-const MemberText = styled.h5``;
+const MemberText = styled.h4``;
 
 const DraftsSection = styled.div`
   display: grid;
@@ -232,6 +242,7 @@ const DraftCard = styled(NavLink)`
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  text-align: center;
   color: white;
   width: 10vw;
   height: auto;
@@ -257,7 +268,9 @@ const DraftImage = styled.img`
   object-fit: contain;
 `;
 
-const DraftTitle = styled.h3``;
+const DraftTitle = styled.p`
+  padding-bottom: 10px;
+`;
 
 const LogoutSection = styled.div`
   display: flex;
@@ -265,7 +278,7 @@ const LogoutSection = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height: 20vh;
+  height: 10vh;
 `;
 
 const MemberOptionsDiv = styled.div`

@@ -49,6 +49,9 @@ export const WelcomePage = () => {
             </MessageList>
           </MessageHeader>
         </MessageDiv>
+        <ImageDiv>
+          <img src="https://www.freepik.com/vectors/backend"/>
+        </ImageDiv>
       </LeftDiv>
       <RightDiv>
         <TextHere>

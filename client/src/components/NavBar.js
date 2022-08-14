@@ -60,6 +60,7 @@ const Logo = styled(NavLink)`
   font-size: 2rem;
   font-style: italic;
   font-weight: 800;
+  margin-top: 10px;
 `;
 const LogoImage = styled.img`
   width: 7vh;
