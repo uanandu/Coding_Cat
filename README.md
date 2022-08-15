@@ -25,9 +25,12 @@ Goal: Create an Online web learning platform that provides necessary resources i
 - Forum
 
 
-## Screenshots
+## Working welcome page
 
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008758286109130803/readme-site.gif)
+
+## Screenshots
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759700797542490/welcome.png)
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759701271478312/drafts.png)
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759713514651668/profile.png)
