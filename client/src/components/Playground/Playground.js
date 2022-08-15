@@ -41,7 +41,7 @@ export const Playground = () => {
             setCode={setHtmlCode}
             displayName="HTML"
             language="html"
-            // placeHolder={htmlPlaceHolder}
+            placeHolder={htmlPlaceHolder}
             onChange={setHtmlCode}
           />
           <Editor
@@ -50,7 +50,7 @@ export const Playground = () => {
             setCode={setCssCode}
             displayName="CSS"
             language="css"
-            // placeHolder={cssPlaceHolder}
+            placeHolder={cssPlaceHolder}
             onChange={setCssCode}
           />
           <Editor
@@ -59,7 +59,7 @@ export const Playground = () => {
             setCode={setJsCode}
             displayName="JS"
             language="javascript"
-            // placeHolder={jsPlaceHolder}
+            placeHolder={jsPlaceHolder}
             onChange={setJsCode}
           />
         </TopContainer>

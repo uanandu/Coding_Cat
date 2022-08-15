@@ -121,7 +121,7 @@ const FeatureTile = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25vw;
+  width: 15vw;
   height: auto;
 `;
 const FeatureImage = styled.img`

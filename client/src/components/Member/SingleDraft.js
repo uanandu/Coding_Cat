@@ -37,7 +37,6 @@ export const SingleDraft = () => {
     axios
       .get(`/api/members/drafts/${draftId}`)
       .then((res) => {
-        console.log("the response from the draft", res);
         setHtmlCode(he.decode(res.data.data.html));
         setCssCode(he.decode(res.data.data.css));
         setJsCode(he.decode(res.data.data.js));

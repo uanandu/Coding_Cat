@@ -109,7 +109,7 @@ const TopContainer = styled.div`
 `;
 const BottomContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   height: 100vh;
   right: 0;

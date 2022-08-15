@@ -202,5 +202,5 @@ const FeatureImage = styled.img`
   object-fit: contain;
 `;
 const FeatureDescription = styled.p`
-  padding: 0 20px 0 20px;
+  padding: 0 20px 0px 20px;
 `;

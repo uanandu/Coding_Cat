@@ -74,7 +74,7 @@ export const Editor = ({
             handleChange(e);
           }}
           language={language}
-          placeholder={placeHolder}
+          // placeholder={placeHolder}
           value={code}
           padding={15}
           style={{

@@ -51,7 +51,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   padding: 0 2rem 0 2rem;
   z-index: 30;
-  border-bottom: 1.5px solid black;
+  border: 1.5px solid black;
 `;
 
 const Logo = styled(NavLink)`
@@ -66,6 +66,7 @@ const LogoImage = styled.img`
   width: 7vh;
   height: auto;
   object-fit: contain;
+  margin-top: 3px; 
 `;
 
 const UserAccount = styled(NavLink)`
@@ -77,11 +78,13 @@ const UserAccount = styled(NavLink)`
 `;
 const UserAvatar = styled.img`
   position: relative;
-  width: 4vw;
+  width: 2vw;
   height: auto;
   object-fit: contain;
   margin-top: 15px;
   margin-right: 1vw;
+  border: 1px solid black; 
+  border-radius: 50%;
 `;
 
 

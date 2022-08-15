@@ -231,10 +231,11 @@ const HeaderSection = styled.header`
   color: white;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 20%;
   width: 100%;
   border-radius: 10px 10px 0 0;
+  padding-top: 10px;
 `;
 const CodeContent = styled.div`
   padding: 0 10px 0px 10px;

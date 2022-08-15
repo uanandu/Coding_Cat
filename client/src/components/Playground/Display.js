@@ -25,7 +25,7 @@ export const Display = ({ sourceCode }) => {
 // styled components
 const DisplayWrapper = styled.div`
   height: 93vh;
-  width: 48vh;
+  width: 50vw;
   background-color: antiquewhite;
   margin: 10px;
   display: flex;
