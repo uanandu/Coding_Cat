@@ -11,6 +11,9 @@ import { UserContext } from "../../context/UserContext"; // from context
 import { Editor } from "../Playground/Editor"; // for editing/displaying the code
 import { Display } from "../Playground/Display"; // for displaying the website
 
+import Icon from "react-icons-kit";
+import {save} from 'react-icons-kit/fa/save'
+
 // Playground specifically for the member/user
 export const MemberPlayground = () => {
 
@@ -68,7 +71,9 @@ export const MemberPlayground = () => {
         <BottomContainer>
           <Display sourceCode={sourceCode} />
           <SaveButtonDiv onSubmit={handleDraftSave}>
-            <SaveButton>Save</SaveButton>
+            <SaveButton>
+              <Icon icon={save} size={30} />
+            </SaveButton>
           </SaveButtonDiv>
         </BottomContainer>
       </Wrapper>
@@ -78,33 +83,40 @@ export const MemberPlayground = () => {
 
 // styled components
 const Wrapper = styled.div`
+  position: relative;
   background-color: black;
   display: flex;
   justify-content: space-evenly;
   flex-grow: 1;
   flex-basis: 0;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
+  border: 1px solid white;
+  border-radius: 5px;
+  top: 5vh;
+  overflow: hidden;
 `;
 
 const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 50%;
+  width: 80%;
   height: 100%;
   left: 0;
   border-bottom: 1px solid black;
-  position: absolute;
+  position: relative;
 `;
 const BottomContainer = styled.div`
   display: flex;
-  width: 50%;
+  justify-content: space-around;
+  width: 100%;
   height: 100vh;
   right: 0;
-  position: absolute;
+  position: relative;
   overflow: hidden;
-
+  border-right: 1px solid white;
+  margin-left: 15px;
 `;
 
 const SaveButtonDiv = styled.form`

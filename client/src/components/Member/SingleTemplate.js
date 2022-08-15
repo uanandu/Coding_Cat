@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react"; // from react 
+import { useEffect, useContext } from "react"; // from react
 import { useParams } from "react-router-dom"; // from react-router-dom
 import axios from "axios"; // from axios
 
@@ -15,7 +15,7 @@ import { Display } from "../Playground/Display"; // for playground display
 // single template display
 export const SingleTemplate = () => {
   const { templateType } = useParams(); // get template type from url
-  const {memberId} = useParams(); // get member id from url
+  const { memberId } = useParams(); // get member id from url
 
   // getting user context
   const {
@@ -27,7 +27,6 @@ export const SingleTemplate = () => {
     setJsCode,
     sourceCode,
   } = useContext(UserContext);
-
 
   // fetch call: get single template
   useEffect(() => {
@@ -43,10 +42,10 @@ export const SingleTemplate = () => {
 
   return (
     <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-  >
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Wrapper>
         <TopContainer>
           <Editor
@@ -56,7 +55,6 @@ export const SingleTemplate = () => {
             language="html"
             onChange={setHtmlCode}
           />
-          <Divider />
           <Editor
             title="CSS"
             code={cssCode}
@@ -64,7 +62,6 @@ export const SingleTemplate = () => {
             language="css"
             onChange={setCssCode}
           />
-          <Divider />
           <Editor
             title="JS"
             code={jsCode}
@@ -83,7 +80,7 @@ export const SingleTemplate = () => {
 
 // styled components
 const Wrapper = styled.div`
-position: relative;
+  position: relative;
   background-color: black;
   display: flex;
   justify-content: space-evenly;
@@ -92,21 +89,16 @@ position: relative;
   width: 100%;
   height: 95vh;
   top: 5vh;
+  border: 1px solid white;
+  border-radius: 5px;
   overflow: hidden;
 `;
-
-const Divider = styled.div`
-  position: relative;
-  width: 100%;
-  height: 4px;
-  background-color: white;
-`
 
 const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 100%;
+  width: 80%;
   height: 100%;
   left: 0;
   border-bottom: 1px solid black;
@@ -114,10 +106,12 @@ const TopContainer = styled.div`
 `;
 const BottomContainer = styled.div`
   display: flex;
+  justify-content: space-around;
   width: 100%;
   height: 100vh;
   right: 0;
   position: relative;
   overflow: hidden;
-
+  border-left: 1px solid white;
+  margin-left: 15px;
 `;

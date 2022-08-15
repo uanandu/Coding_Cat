@@ -13,6 +13,8 @@ export const UserProvider = ({ children }) => {
   const [jsCode, setJsCode] = useState(""); // the js code
   const [sourceCode, setSourceCode] = useState(""); // the final source code
 
+  const [error, setError] = useState(""); // error message
+
   // templates fetched here
   const [templates, setTemplates] = useState([]);
   const [avatarImage, setAvatarImage] = useState("");
@@ -85,7 +87,7 @@ export const UserProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.error);
       });
   };
 
@@ -149,7 +151,7 @@ export const UserProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.error);
       });
 
   }
@@ -169,7 +171,7 @@ export const UserProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.error);
       });
   }
 

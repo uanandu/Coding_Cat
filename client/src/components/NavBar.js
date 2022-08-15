@@ -77,20 +77,14 @@ const UserAccount = styled(NavLink)`
 `;
 const UserAvatar = styled.img`
   position: relative;
-  width: 4vh;
+  width: 4vw;
   height: auto;
   object-fit: contain;
-  margin-top: 10px;
-  margin-right: 3.5vw;
+  margin-top: 15px;
+  margin-right: 1vw;
 `;
 
-const LoginButton = styled(NavLink)`
-  text-decoration: none;
-  color: #000;
-  font-size: 1.5rem;
-  border: 1px solid #000;
-  padding: 10px;
-`;
+
 const NavButton = styled.button`
   background-color: black;
   border: 1px solid black;

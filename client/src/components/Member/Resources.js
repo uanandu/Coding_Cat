@@ -104,16 +104,22 @@ export const Resources = () => {
 // styled components
 
 const Wrapper = styled.div`
-  color: white;
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+position: relative;
+  width: 100%;
+  height: 95vh;
+  top: 5vh;
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: center;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  letter-spacing: 0.05em;
 `;
 
 const MemberText = styled.div``;
@@ -122,9 +128,8 @@ const MemberTitle = styled.h1``;
 const FeaturesContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-gap: 5vw;
+  grid-gap: 3vw;
   position: relative;
-  top: 3vh;
 `;
 
 // set to navlink to make it clickable

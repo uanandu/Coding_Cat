@@ -57,11 +57,6 @@ export const Profile = () => {
         <ProfileWelcome>
           <MemberTitle>
             Profile{" "}
-            <img
-              style={{ width: "80px", height: "auto" }}
-              src="https://media.giphy.com/media/RhGbWYqUJdPWM18zI6/giphy.gif"
-              alt="Coding Cat"
-            />
           </MemberTitle>
           <MemberSubTitle>
             Here is your profile @{userInfo.username}
@@ -132,13 +127,16 @@ export const Profile = () => {
 const Wrapper = styled.div`
   color: white;
   background-color: black;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  padding: 20px 0 20px 0;
   display: flex;
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: 1px solid white;
+  border-radius: 5px;
 `;
 
 const ProfileWelcome = styled.div`
@@ -185,19 +183,8 @@ const MemberDetails = styled.div`
   border-radius: 5px;
   margin-right: 50px;
   cursor: pointer;
-  animation: glowing 1.5s infinite;
   font-style: italic;
-  @keyframes glowing {
-    0% {
-      box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
-    }
-    50% {
-      box-shadow: 2px 4px 5px 0px rgba(255, 255, 255, 3);
-    }
-    100% {
-      box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
-    }
-  }
+  border: 1px solid white;
 `;
 const MemberInfo = styled.h4``;
 
@@ -263,7 +250,7 @@ const DraftCard = styled(NavLink)`
   }
 `;
 const DraftImage = styled.img`
-  width: 100%;
+  width: 80%;
   height: auto;
   object-fit: contain;
 `;

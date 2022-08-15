@@ -100,8 +100,10 @@ const Wrapper = styled.div`
   flex-basis: 0;
   width: 100%;
   height: 95vh;
+  border: 1px solid white;
+  border-radius: 5px;
   top: 5vh;
-  overflow: hidden;
+  overflow: hidden;;
 `;
 
 const TopContainer = styled.div`
@@ -115,6 +117,7 @@ const TopContainer = styled.div`
   position: relative;
 `;
 const BottomContainer = styled.div`
+position: fixed;
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -122,7 +125,7 @@ const BottomContainer = styled.div`
   right: 0;
   position: relative;
   overflow: hidden;
-  border-right: 1px solid white;
+  border-left: 1px solid white;
   margin-left: 15px;
 `;
 

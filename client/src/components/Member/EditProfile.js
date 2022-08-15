@@ -125,14 +125,19 @@ export const EditProfile = () => {
 //styled components
 
 const Wrapper = styled.div`
+position: relative;
   width: 100%;
   height: 95vh;
-  position: absolute;
+  top: 5vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
   color: white;
   letter-spacing: 0.05em;
 `;
@@ -172,7 +177,9 @@ const EditProfileForm = styled.form`
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  margin: 0 auto;
+  height: 100%;
+  margin: 20px 0 20px 0;
+  padding: 20px 0 20px 0;
 `;
 
 const EditUsername = styled.div`

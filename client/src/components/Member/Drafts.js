@@ -71,16 +71,19 @@ export const Drafts = () => {
 
 // styled components
 const Wrapper = styled.div`
+  position: absolute;
   color: white;
   background-color: black;
-  width: 100vw;
-  height: 100%;
+  width: 100%;
+  height: 95vh;
+  top: 5vh;
   display: flex;
   align-items: center;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 5vh;
+  border: 1px solid white;
+  border-radius: 5px;
+  overflow: hidden;
 `;
 
 const DraftsHeader = styled.div``;
@@ -105,11 +108,11 @@ const DraftCard = styled(NavLink)`
   text-decoration: none;
   text-align: center;
   color: white;
-  width: 15vw;
+  width: 20vw;
   height: auto;
   padding: 20px;
   margin: 0 20px 0 20px;
-  top: 5vh;
+  top: 10vh;
   box-shadow: 2px 2px 5px 4px rgba(255, 255, 255, 1);
   border-radius: 5px;
   transition: 1s ease-in-out;

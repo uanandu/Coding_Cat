@@ -41,7 +41,7 @@ export const Playground = () => {
             setCode={setHtmlCode}
             displayName="HTML"
             language="html"
-            placeHolder={htmlPlaceHolder}
+            // placeHolder={htmlPlaceHolder}
             onChange={setHtmlCode}
           />
           <Editor
@@ -50,7 +50,7 @@ export const Playground = () => {
             setCode={setCssCode}
             displayName="CSS"
             language="css"
-            placeHolder={cssPlaceHolder}
+            // placeHolder={cssPlaceHolder}
             onChange={setCssCode}
           />
           <Editor
@@ -59,7 +59,7 @@ export const Playground = () => {
             setCode={setJsCode}
             displayName="JS"
             language="javascript"
-            placeHolder={jsPlaceHolder}
+            // placeHolder={jsPlaceHolder}
             onChange={setJsCode}
           />
         </TopContainer>
@@ -73,34 +73,37 @@ export const Playground = () => {
 
 // styled components
 const Wrapper = styled.div`
+  position: relative;
   background-color: black;
   display: flex;
   justify-content: space-evenly;
   flex-grow: 1;
   flex-basis: 0;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
+  border: 1px solid white;
+  border-radius: 5px;
   top: 5vh;
   overflow: hidden;
-  position: relative;
 `;
 
 const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 50%;
+  width: 100%;
   height: 100%;
   left: 0;
-  border-bottom: 1px solid black;
-  position: absolute;
+  position: relative;
 `;
 const BottomContainer = styled.div`
   display: flex;
-  width: 50%;
+  justify-content: space-around;
+  width: 100%;
   height: 100vh;
   right: 0;
-  position: absolute;
+  position: relative;
   overflow: hidden;
-
+  border-left: 1px solid white;
+  margin-left: 15px;
 `;

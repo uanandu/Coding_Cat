@@ -88,20 +88,33 @@ export const Registration = () => {
 
 // styled-components
 const Wrapper = styled.div`
+position: relative;
   width: 100%;
   height: 95vh;
-  position: absolute;
+  top: 5vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
   color: white;
   letter-spacing: 0.05em;
 `;
 
 const WelcomeText = styled.h1``;
-const InstructionText = styled.h2``;
+const InstructionText = styled.h2`
+  
+  &:last-child {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  }
+`;
+
 
 const RedirectButton = styled(NavLink)`
   text-decoration: none;

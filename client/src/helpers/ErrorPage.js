@@ -5,8 +5,7 @@ export const ErrorPage = () => {
   return (
     <Wrapper>
       <ErrorContainer>
-        <h1>404</h1>
-        <h2>Page Not Found</h2>
+        <img src="https://media.giphy.com/media/jspCHR7d6h5IB9vaUA/giphy.gif?cid=ecf05e473cwl75n2ktwcre3woy60nh6k714ze0ylvka3nozh&rid=giphy.gif&ct=s" alt="error" />
       </ErrorContainer>
     </Wrapper>
   );
@@ -21,8 +20,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: black;
-  color: white;
 `;
 
 const ErrorContainer = styled.div`

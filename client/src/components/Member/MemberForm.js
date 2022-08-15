@@ -118,17 +118,18 @@ export const MemberForm = () => {
 
 // styled-components
 const Wrapper = styled.div`
+  color: white;
+  background-color: black;
   width: 100%;
-  height: 95vh;
-  top: 5vh;
-  position: absolute;
+  height: 100vh;
+  padding: 20px 0 20px 0;
+  display: flex;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  background-color: black;
-  color: white;
-  letter-spacing: 0.05em;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 5px;
 `;
 
 const FormContainer = styled.div`
@@ -140,19 +141,6 @@ const FormContainer = styled.div`
   height: 70%;
   width: 70vw;
   margin-right: 20px;
-  animation: glowing 1.5s infinite;
-
-  @keyframes glowing {
-    0% {
-      box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
-    }
-    50% {
-      box-shadow: 2px 4px 5px 0px rgba(255, 255, 255, 3);
-    }
-    100% {
-      box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 1);
-    }
-  }
 `;
 
 const MemberProfileForm = styled.form`
@@ -278,6 +266,7 @@ const MemberAvatarDiv = styled.div`
   justify-content: space-evenly;
 `;
 const AvataButton = styled.button`
+  margin-right: 30px;
   cursor: pointer;
 
   &:focus {
@@ -298,7 +287,7 @@ const AvatarImagesDiv = styled.div`
   justify-content: space-evenly;
 `;
 const MemberAvatar = styled.img`
-  width: 40px;
+  width: 60px;
   height: auto;
   border-radius: 50%;
   transition: 1s ease-in-out;
@@ -309,6 +298,7 @@ const MemberAvatar = styled.img`
   &:active {
     box-shadow: 2px 2px 5px 0px yellow;
   }
+  
 `;
 
 const MemberOccupationDiv = styled.div`

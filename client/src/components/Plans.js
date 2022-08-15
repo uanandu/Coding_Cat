@@ -39,10 +39,10 @@ export const Plans = () => {
             <MemberProsList>
               <MemberProsText>Features:</MemberProsText>
               <MemberProsItem>Member plan</MemberProsItem>
-              <MemberProsItem>Templates to create your own</MemberProsItem>
+              <MemberProsItem>Templates to start from and learn</MemberProsItem>
               <MemberProsItem>Drafts to save your work</MemberProsItem>
               <MemberProsItem>Coding lessons</MemberProsItem>
-              <MemberProsItem>Coding Exercises</MemberProsItem>
+              <MemberProsItem>Coding Resources</MemberProsItem>
 
               <MemberCostText>Registration required</MemberCostText>
             </MemberProsList>
@@ -60,6 +60,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  height: 100vh;
+  position: relative;
 `;
 
 const RegistrationContainer = styled.div`
@@ -80,24 +85,20 @@ const GuestContainer = styled(NavLink)`
   color: white;
   background-color: black;
   width: 100%;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0 10px 10px 10px;
+  text-align: center;
+  margin: 0 20px 0px 10px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  transition: 1s ease-in-out;
-  cursor: pointer;
+  border: 1px solid white;
 
   &:hover {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    transform: scale(1.05);
-  }
-
-  &:active {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    outline: none;
+    box-shadow: 2px 4px 7px 0px rgba(255, 255, 255, 2);
   }
 `;
 
@@ -125,6 +126,7 @@ const GuestProsItem = styled.li`
 `;
 const GuestCostText = styled.h1`
   text-transform: uppercase;
+  margin-top: 30px;
 `;
 
 const MemberContainer = styled(NavLink)`
@@ -132,24 +134,19 @@ const MemberContainer = styled(NavLink)`
   color: white;
   background-color: black;
   width: 100%;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
   margin: 0 10px 10px 10px;
-  border: none;
+  border: 1px solid white;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-  transition: 1s ease-in-out;
-  cursor: pointer;
 
   &:hover {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-    transform: scale(1.05);
-  }
-
-  &:active {
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    outline: none;
+    box-shadow: 2px 4px 7px 0px rgba(255, 255, 255, 2);
   }
 `;
 
@@ -178,4 +175,5 @@ const MemberProsItem = styled.li`
 `;
 const MemberCostText = styled.h1`
   text-transform: uppercase;
+  margin-top: 30px;
 `;

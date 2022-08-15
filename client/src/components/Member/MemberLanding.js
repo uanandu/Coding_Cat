@@ -33,37 +33,37 @@ export const MemberLanding = () => {
     },
     {
       id: 2,
-      type: "Drafts",
-      description: "Save your work",
-      image: "https://media.giphy.com/media/l41lL7byr2fvtxVHa/giphy.gif",
+      type: "Community Drafts",
+      description: "Save your work and take inspiration from others",
+      image: "https://media.giphy.com/media/9V73lQx5Sa7r14IDqT/giphy.gif",
       link: `/members/drafts`,
     },
     {
       id: 3,
       type: "Profile",
       // description: "View your profile",
-      image: "https://media.giphy.com/media/l3UctmWIlDqBASA6c/giphy.gif",
+      image: "https://media.giphy.com/media/jV50tlDmJYgcYdTA6q/giphy.gif",
       link: `/members/profile`,
     },
     {
       id: 4,
       type: "Coding classes",
       description: "Learn to code",
-      image: "https://media.giphy.com/media/357azZ5slZMre/giphy.gif",
+      image: "https://media.giphy.com/media/dscTJjpsiVamjIk6nk/giphy.gif",
       link: `/members/coding-classes`,
     },
+    // {
+    //   id: 5,
+    //   type: "Coding forums",
+    //   description: "Discuss with other members",
+    //   image: "https://media.giphy.com/media/kZhTzZhLseEDQARkUN/giphy.gif",
+    //   link: `/members/coding-forums`,
+    // },
     {
       id: 5,
-      type: "Coding forums",
-      description: "Discuss with other members",
-      image: "https://media.giphy.com/media/kZhTzZhLseEDQARkUN/giphy.gif",
-      link: `/members/coding-forums`,
-    },
-    {
-      id: 6,
       type: "Resources",
       description: "Go-to resources",
-      image: "https://media.giphy.com/media/xUA7b2OfgTuVzqpVXq/giphy.gif",
+      image: "https://media.giphy.com/media/dRsbhtWff5t5QeddbE/giphy.gif",
       link: `/members/resources`,
     }
   ];
@@ -105,14 +105,21 @@ export const MemberLanding = () => {
 // styled components
 
 const Wrapper = styled.div`
-  color: white;
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 95vh;
+  top: 5vh;
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  letter-spacing: 0.05em;
 `;
 
 const MemberInstructions = styled.div`
@@ -128,7 +135,7 @@ const MemberText = styled.div`
   justify-content: center;
   align-items: center;
   width: 30vw;
-  margin-top: 7vh;
+  margin-top: 2vh;
 `;
 const MemberTitle = styled.h1``;
 
@@ -147,9 +154,10 @@ const Feature = styled(NavLink)`
   justify-content: flex-start;  
   align-items: center;
   text-decoration: none;
-  color: white;
+  background-color: white;
+  color: black;
   transition: 1s ease-in-out;
-  padding: 30px;
+  padding: 30px 0 30px 0;
   border-radius: 10px;
   width: auto;
   height: 35vh;
@@ -189,10 +197,10 @@ const FeatureTile = styled.div`
   flex-direction: column;
 `;
 const FeatureImage = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  width: 15vw;
+  height: 15vh;
   object-fit: contain;
-  padding: 20px;
 `;
-const FeatureDescription = styled.p``;
+const FeatureDescription = styled.p`
+  padding: 0 20px 0 20px;
+`;

@@ -7,6 +7,9 @@ import { motion } from "framer-motion";
 
 import CodeEditor from "@uiw/react-textarea-code-editor"; // for editing/displaying the code (Code editor given by the dependency)
 
+import Icon from "react-icons-kit";
+import { ban } from "react-icons-kit/fa/ban";
+
 // Editor for editing and changing the code
 export const Editor = ({
   displayName,
@@ -53,16 +56,18 @@ export const Editor = ({
             <TitleText>{displayName}</TitleText>
             <TitleIcon></TitleIcon>
           </Title>
-          <CollapseButton onClick={hancleClick}>
-            {open ? "Collapse 🤛🏽" : "Expand 🤌🏽"}
-          </CollapseButton>
-          <ClearButton 
-            onClick={() => {
-              onChange("");
-            }}
-          >
-            clear
-          </ClearButton>
+          <ButtonFunctions>
+            <CollapseButton onClick={hancleClick}>
+              {open ? "Collapse 🤛🏽" : "Expand 🤌🏽"}
+            </CollapseButton>
+            <ClearButton
+              onClick={() => {
+                onChange("");
+              }}
+            >
+              <Icon icon={ban} size={20} />
+            </ClearButton>
+          </ButtonFunctions>
         </TitleArea>
         <CodeEditor
           onChange={(e) => {
@@ -91,7 +96,7 @@ export const Editor = ({
 
 // styled components
 const Wrapper = styled.div`
-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -114,28 +119,39 @@ const TitleArea = styled.div`
 
 const Title = styled.div`
   background-color: white;
-  width: 120px;
+  width: 100px;
   height: 30px;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
   border-radius: 10px 0 0 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const TitleText = styled.h3``;
 
 const TitleIcon = styled.img``;
 
+const ButtonFunctions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+`
+
 const CollapseButton = styled.button`
-  border-radius: 10px;
+  border-radius: 5px;
   width: 100px;
   font-weight: 700;
   cursor: pointer;
+  margin-right: 10px;
 `;
 
 const ClearButton = styled.button`
   border-radius: 10px;
-  width: 100px;
+  width: 50px;
   font-weight: 700;
   cursor: pointer;
 `;

@@ -49,9 +49,6 @@ export const WelcomePage = () => {
             </MessageList>
           </MessageHeader>
         </MessageDiv>
-        <ImageDiv>
-          <img src="https://www.freepik.com/vectors/backend"/>
-        </ImageDiv>
       </LeftDiv>
       <RightDiv>
         <TextHere>
@@ -90,6 +87,9 @@ position: relative;
   align-items: center;
   justify-content: space-evenly;
   background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
   color: white;
   letter-spacing: 0.05em;
 `;
@@ -166,7 +166,8 @@ const RightDiv = styled.div`
 
 const BottomRightDiv = styled.div``;
 
-const TextHere = styled.div``;
+const TextHere = styled.div`
+`;
 
 const WelcomeText = styled.h1``;
 
@@ -182,7 +183,7 @@ const StartCodingLink = styled(NavLink)`
   font-family: monospace, sans-serif;
   border: 2px solid white;
   padding: 20px;
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
   &:hover {
     background-color: white;
     color: black;

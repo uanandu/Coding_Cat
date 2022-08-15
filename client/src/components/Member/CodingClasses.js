@@ -99,25 +99,31 @@ export const CodingClasses = () => {
 
 // styled components
 const Wrapper = styled.div`
-  color: white;
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+position: relative;
+  width: 100%;
+  height: 95vh;
+  top: 5vh;
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  letter-spacing: 0.05em;
 `;
 
 const CodingClassesHeader = styled.div`
   position: relative;
-  top: 10vh;
 `;
 const CodingClassesTitle = styled.h1``;
 
 const CodingClassesBody = styled.div`
   position: relative;
-  top: 15vh;
   display: grid;
   grid-template-columns: auto auto;
   gap: 100px;
