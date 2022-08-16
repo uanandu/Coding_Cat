@@ -1,16 +1,18 @@
-import styled from "styled-components";
-import { useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import axios from "axios";
+import styled from "styled-components"; //styled-components
+import { useContext, useEffect } from "react"; //react
+import { NavLink } from "react-router-dom"; //react-router-dom
+import axios from "axios"; //axios
 
 // framer motion
 import { motion } from "framer-motion";
 
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../context/UserContext"; //context
 
+// here we show all the templates available for the user
 export const Templates = () => {
-  const { templates, setTemplates, userInfo } = useContext(UserContext);
+  const { templates, setTemplates, userInfo, setError } = useContext(UserContext);
 
+  // template images
   const templateImages = [
     "https://cdn.discordapp.com/attachments/978673047772991548/1007285586828202025/html-starter.png",
     "https://cdn.discordapp.com/attachments/978673047772991548/1007285746014617641/headings.png",
@@ -19,13 +21,15 @@ export const Templates = () => {
     "https://cdn.discordapp.com/attachments/978673047772991548/1007286271569305720/form.png",
   ];
 
+
+  // find all the templates
   useEffect(() => {
     axios
       .get(`/api/members/templates`)
       .then((res) => {
         setTemplates(res.data.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err));
   }, []);
 
   return (

@@ -26,6 +26,7 @@ export const SingleTemplate = () => {
     jsCode,
     setJsCode,
     sourceCode,
+    setError
   } = useContext(UserContext);
 
   // fetch call: get single template
@@ -37,7 +38,7 @@ export const SingleTemplate = () => {
         setCssCode(Object.values(res.data.css).join("\n"));
         setJsCode(Object.values(res.data.js).join("\n"));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err));
   }, [memberId, templateType]);
 
   return (

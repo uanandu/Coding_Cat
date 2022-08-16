@@ -18,7 +18,7 @@ import catImage from "../../assets/Coding Cat-logos_transparent.png"; // for def
 export const Profile = () => {
   const { user } = useAuth0(); // get user info from auth0
 
-  const { userInfo, setUserInfo } = useContext(UserContext); // get user info from context
+  const { userInfo, setUserInfo, setError } = useContext(UserContext); // get user info from context
 
   // user draft state
   const [userDrafts, setUserDrafts] = useState([]);
@@ -31,7 +31,7 @@ export const Profile = () => {
         setUserInfo(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err);
       });
   }, [user]);
 
@@ -43,7 +43,7 @@ export const Profile = () => {
         setUserDrafts(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err);
       });
   }, [user]);
 

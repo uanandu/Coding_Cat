@@ -13,12 +13,16 @@ import { UserContext } from "../../context/UserContext"; // for context
 export const MemberLanding = () => {
   const { user} = useAuth0(); // get user from auth0
 
-  const {userInfo, setUserInfo} = useContext(UserContext); // get user info from context
+  const {userInfo, setUserInfo, setError} = useContext(UserContext); // get user info from context
 
   // fetch call: get user info
   useEffect(() => {
-    axios.get(`/api/members/${user.name}`).then(res => {
+    axios.get(`/api/members/${user.name}`)
+    .then(res => {
       setUserInfo(res.data.data);
+    })
+    .catch(err => {
+      setError(err);
     });
   }, [user]);
 

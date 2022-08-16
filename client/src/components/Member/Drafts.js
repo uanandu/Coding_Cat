@@ -16,10 +16,11 @@ import catimage from "../../assets/Coding Cat-logos_transparent.png"; // for def
 
 // All the drafts
 export const Drafts = () => {
-  const [drafts, setDrafts] = useState([]);
+  const [drafts, setDrafts] = useState([]); // set the state for the drafts
 
-  const { deleteDraft } = useContext(UserContext);
+  const { deleteDraft, setError } = useContext(UserContext); // get the deleteDraft function from context
 
+  // fetch call: get the drafts of the user
   useEffect(() => {
     axios
       .get("/api/alldrafts")
@@ -27,7 +28,7 @@ export const Drafts = () => {
         setDrafts(res.data.data);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err);
       });
   }, []);
 

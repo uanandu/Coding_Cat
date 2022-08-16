@@ -28,6 +28,7 @@ export const NavBar = () => {
         </>
       )}
 
+        {/* if user is authenticated/signed in, we see their avatar on navbar */}
       {isAuthenticated && (
         <>
           <UserAccount to={`/members/profile`}>

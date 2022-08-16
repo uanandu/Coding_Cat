@@ -13,13 +13,14 @@ import { UserContext } from "../../context/UserContext"; // from context
 
 // Edit Profile component for the user
 export const EditProfile = () => {
-  const navigate = useNavigate();
-  const { user } = useAuth0();
+  const navigate = useNavigate(); // for navigating to different pages
+  const { user } = useAuth0(); // get user info from auth0
 
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, setError } = useContext(UserContext); // get user info from context
 
-  const [editUser, setEditUser] = useState(userInfo);
+  const [editUser, setEditUser] = useState(userInfo); // user info to be edited
 
+  // on change of the input fields
   const handleEditChange = (e) => {
     e.preventDefault();
     setEditUser({
@@ -28,6 +29,7 @@ export const EditProfile = () => {
     });
   };
 
+  // on submit, update the user info in the database
   const handleEditSubmit = (e) => {
     e.preventDefault();
     axios
@@ -40,7 +42,7 @@ export const EditProfile = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setError(err);
       });
   };
 

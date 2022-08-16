@@ -30,6 +30,7 @@ export const SingleDraft = () => {
     jsCode,
     setJsCode,
     sourceCode,
+    setError
   } = useContext(UserContext);
 
   // get draft info from database
@@ -42,7 +43,7 @@ export const SingleDraft = () => {
         setJsCode(he.decode(res.data.data.js));
         setCreditToUser(res.data.data.user);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err));
   }, [memberId, draftId]);
 
   return (

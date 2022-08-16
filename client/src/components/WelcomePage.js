@@ -25,7 +25,7 @@ export const WelcomePage = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 
@@ -36,7 +36,7 @@ export const WelcomePage = () => {
         setJoke(res.data.joke);
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }, []);
 

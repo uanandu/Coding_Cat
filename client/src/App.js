@@ -59,7 +59,7 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <ErrorPage />
+          <h1>Error...</h1>
         </header>
       </div>
     );
