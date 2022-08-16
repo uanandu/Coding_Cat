@@ -29,6 +29,7 @@ import { EditProfile } from './components/Member/EditProfile';
 import { MemberPlayground } from './components/Member/MemberPlaygrond';
 import {useAuth0, withAuthenticationRequired} from '@auth0/auth0-react';
 import GlobalStyles from './helpers/GlobalStyles';
+import { Footer } from './Footer';
 
 // protected routes
 const ProtectedProfile = withAuthenticationRequired(Profile)
@@ -88,6 +89,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       </AnimatePresence>
+      {/* <Footer /> */}
     </>
   );
   }

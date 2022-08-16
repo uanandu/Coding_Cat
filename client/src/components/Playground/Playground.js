@@ -84,6 +84,7 @@ const Wrapper = styled.div`
   border: 1px solid white;
   border-radius: 5px;
   top: 5vh;
+  bottom: 7vh;
   overflow: hidden;
 `;
 

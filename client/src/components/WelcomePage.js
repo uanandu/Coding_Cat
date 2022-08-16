@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { CodeDisplay } from "./CodeDisplay";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -11,6 +11,8 @@ export const WelcomePage = () => {
   const { user } = useAuth0();
 
   const [userCheck, setUserCheck] = useState(false);
+
+  const [joke, setJoke] = useState("");
 
   if (user) {
     axios
@@ -27,58 +29,73 @@ export const WelcomePage = () => {
       });
   }
 
+  useEffect(() => {
+    axios
+      .get("https://v2.jokeapi.dev/joke/Miscellaneous,Dark,Pun,Christmas?blacklistFlags=racist,sexist&type=single")
+      .then((res) => {
+        setJoke(res.data.joke);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-  >
-    <Wrapper>
-      <LeftDiv>
-        <ImageDiv>
-          <Image src="https://cdn.discordapp.com/attachments/978673047772991548/1006973184656036050/coding.png" />
-        </ImageDiv>
-        <MessageDiv>
-          <MessageHeader>
-            <MessageList>
-              <MessageItem>repeat.</MessageItem>
-              <MessageItem>Develop.</MessageItem>
-              <MessageItem>design.</MessageItem>
-              <MessageItem>learn.</MessageItem>
-              <MessageItem>Imagine.</MessageItem>
-            </MessageList>
-          </MessageHeader>
-        </MessageDiv>
-      </LeftDiv>
-      <RightDiv>
-        <TextHere>
-          <WelcomeText>Welcome to the Coding Cat community!</WelcomeText>
-          <CodeDisplay />
-        </TextHere>
-        <BottomRightDiv>
-          {user ? (
-            <>
-              {userCheck ? (
-                <StartCodingLink to="/members/landing">Go!</StartCodingLink>
-              ) : (
-                <StartCodingLink to="/member">
-                  Member Profile Setup
-                </StartCodingLink>
-              )}
-            </>
-          ) : (
-            <StartCodingLink to="/plans">Go!</StartCodingLink>
-          )}
-        </BottomRightDiv>
-      </RightDiv>
-    </Wrapper>
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Wrapper>
+        <LeftDiv>
+          <ImageDiv>
+            <Image src="https://cdn.discordapp.com/attachments/978673047772991548/1006973184656036050/coding.png" />
+          </ImageDiv>
+          <MessageDiv>
+            <MessageHeader>
+              <MessageList>
+                <MessageItem>repeat.</MessageItem>
+                <MessageItem>Develop.</MessageItem>
+                <MessageItem>design.</MessageItem>
+                <MessageItem>learn.</MessageItem>
+                <MessageItem>Imagine.</MessageItem>
+              </MessageList>
+            </MessageHeader>
+          </MessageDiv>
+          <JokeDiv>
+            <JokeTitle>Joke of the moment:</JokeTitle>
+            <Joke>{joke}</Joke>
+          </JokeDiv>
+        </LeftDiv>
+        <RightDiv>
+          <TextHere>
+            <WelcomeText>Welcome to the Coding Cat community!</WelcomeText>
+            <CodeDisplay />
+          </TextHere>
+          <BottomRightDiv>
+            {user ? (
+              <>
+                {userCheck ? (
+                  <StartCodingLink to="/members/landing">Lets Go!</StartCodingLink>
+                ) : (
+                  <StartCodingLink to="/member">
+                    Member Profile Setup
+                  </StartCodingLink>
+                )}
+              </>
+            ) : (
+              <StartCodingLink to="/plans"> Lets Go!</StartCodingLink>
+            )}
+          </BottomRightDiv>
+        </RightDiv>
+      </Wrapper>
     </motion.div>
   );
 };
 
 // styled-components
 const Wrapper = styled.div`
-position: relative;
+  position: relative;
   width: 100%;
   height: 95vh;
   top: 5vh;
@@ -97,6 +114,9 @@ position: relative;
 const LeftDiv = styled.div`
   width: 100%;
   height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 const ImageDiv = styled.div``;
@@ -154,6 +174,21 @@ const MessageItem = styled.li`
   width: 100%;
 `;
 
+const JokeDiv = styled.div`
+  width: 40vw;
+  height: auto;
+  border: 1px solid white;
+  padding: 20px;
+  margin-top: 10vh;
+`;
+
+const JokeTitle = styled.h3`
+  
+`;
+
+const Joke = styled.p`
+`;
+
 const RightDiv = styled.div`
   position: relative;
   display: flex;
@@ -166,8 +201,7 @@ const RightDiv = styled.div`
 
 const BottomRightDiv = styled.div``;
 
-const TextHere = styled.div`
-`;
+const TextHere = styled.div``;
 
 const WelcomeText = styled.h1``;
 
