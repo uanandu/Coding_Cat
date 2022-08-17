@@ -99,4 +99,10 @@ const NavButton = styled.button`
   margin: 10px;
   transition: 1s ease-in-out;
   cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 2px 4px 7px 0px rgba(0, 0, 0, 2);
+  }
 `;

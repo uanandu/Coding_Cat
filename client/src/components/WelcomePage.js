@@ -76,7 +76,7 @@ export const WelcomePage = () => {
             {user ? (
               <>
                 {userCheck ? (
-                  <StartCodingLink to="/members/landing">Lets Go!</StartCodingLink>
+                  <StartCodingLink to="/members/landing">Let's Go!</StartCodingLink>
                 ) : (
                   <StartCodingLink to="/member">
                     Member Profile Setup
@@ -84,7 +84,7 @@ export const WelcomePage = () => {
                 )}
               </>
             ) : (
-              <StartCodingLink to="/plans"> Lets Go!</StartCodingLink>
+              <StartCodingLink to="/plans"> Let's Go!</StartCodingLink>
             )}
           </BottomRightDiv>
         </RightDiv>
