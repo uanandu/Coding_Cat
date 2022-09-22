@@ -32,24 +32,43 @@ Goal: Create an Online web learning platform that provides necessary resources i
 ## Screenshots
 
 1) Welcome page
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759700797542490/welcome.png)
+
 2) Drafts Page
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759701271478312/drafts.png)
+
 3) Profile page
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759713514651668/profile.png)
+
 4) Edit-Profile page
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759713825034302/edit_profile.png)
+
 5) Coding classes page
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759714202538165/coding_classes.png)
-5) Coding resources page
+
+6) Coding resources page
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759714571628584/coding_resources.png)
-6) Single drafts page
+
+7) Single drafts page
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759714991054958/single_draft.png)
-7) Single template page
+
+8) Single template page
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759715330785411/single_template.png)
-8) All templates
+
+9) All templates
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759715834109983/templates.png)
-9) Member landing area
+
+10) Member landing area
+
 ![App Screenshot](https://cdn.discordapp.com/attachments/978673047772991548/1008759716303876106/member_area.png)
 
 
